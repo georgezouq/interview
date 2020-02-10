@@ -61,3 +61,31 @@
 二、可读性会下降，因为一个组件里的数据，你根本就看不出来是从哪来的
 
 三、增加耦合，大量的上传派发，会让耦合性大大的增加，本来Vue用Component就是为了减少耦合，现在这么用，和组件化的初衷相背。
+
+### Vue 双向绑定的实现原理
+
+通过　`Object.defineProperty` 实现对象的 get 和 set 方法实现数据劫持。结合 `发布 / 订阅者模式` 实现。
+
+```js
+var Book = {}
+var name = '';
+Object.defineProperty(Book, 'name', {
+  set: function (value) {
+    name = value;
+    console.log('你取了一个书名叫做' + value);
+  },
+  get: function () {
+    return '《' + name + '》'
+  }
+})
+ 
+Book.name = 'vue权威指南';  // 你取了一个书名叫做vue权威指南
+console.log(Book.name);  // 《vue权威指南》
+```
+
+- 监听器 Observer：劫持并坚挺所有属性，如果有变动，通知订阅者
+- 订阅者 Watcher： 可以收到属性的变化通知，并执行相应的函数，从而更新视图
+- 解析器 Compile ：可以扫描和解析每个节点的相关指令，并根据初始化模版数据以及初始化相应的订阅器
+
+##### 实现双向数据绑定
+

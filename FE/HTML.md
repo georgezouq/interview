@@ -35,3 +35,84 @@ button input a span td import b img strong
 - [有趣的HTML5：离线存储 manifest.appcache](https://segmentfault.com/a/1190000000732617)
 - [IndexedDB - 一种在用户浏览器中持久存储数据的方法。](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API/Using_IndexedDB)
 
+### 浏览器渲染页面步骤
+
+- 下载文件
+
+Attachment:
+
+- 渲染引擎解析 HTML 文件构建 DOM 树
+- 渲染引擎使用 CSS 解析器 构建 CSSOM 树。
+    - DOM 树 根节点为 documentElement
+- DOM树 和 CSSOM树 关联起来构成渲染树（RenderTree）. 
+    - 渲染树类似DOM树，但并不是一一对应的，比如 display:none 的就不会包含在DOM树中，还有就是Head之类的所有在其中不可见的元素也是一样。另外 DOM元素在渲染树中也可能存在很多个节点。
+    - 渲染树上的每一个节点称谓 frame 或者一个 box，每一个节点都有CSS box 的属性。
+    - 渲染树的跟节点是包含所有其他元素的 frame/box。可以理解为限制在浏览器页面范围内的窗口区域。就是从视窗范围内页面(0, 0)到(window.innerWidth, window.innerHeight)的矩形显示区域
+- 重排 和 重绘
+
+![](../images/rending.png)
+    
+### 重排 和 重绘
+
+- 重排：部分渲染树（或整个）需要重新计算分析并且节点尺寸需要重新计算  
+- 重绘：由于节点的几何属性发生改变或者由于样式发生改变，例如改变元素背景色，屏幕上的部分内容需要更新
+
+##### 什么情况会触发重排 和 重绘
+
+- 添加、删除、更新 DOM 节点
+- 通过 display: none 隐藏一个DOM节点 - 触发重排和重绘
+- 通过 visibility: hidden 隐藏一个DOM节点 - 只触发重绘 （没有几何变化）
+- 移动或者给页面中的 DOM节点添加动画
+- 添加一个样式表、调整样式属性
+- 用户行为（如调整浏览器窗口大小，改变字号，或者滚动等）
+
+```js
+var bstyle = document.body.style; // cache
+bstyle.padding = "20px"; // 重排+重绘
+bstyle.border = "10px solid red"; // 另一次重排+重绘
+bstyle.color = "blue"; // 没有尺寸变化，只重绘
+bstyle.backgroundColor = "#fad"; // 重绘
+bstyle.fontSize = "2em"; // 重排+重绘
+// 新的DOM节点 - 重排+重绘
+document.body.appendChild(document.createTextNode('dude!'));
+```
+
+一些重排可能开销更大。想象一下渲染树，如果你直接改变body下的一个子节点，可能并不会对其它节点造成影响。但是当你给一个当前页面顶级的div添加动画或者改变它的大小，就会推动整个页面改变-听起来代价就十分高昂
+
+[参考](https://juejin.im/entry/582f16fca22b9d006b7afd89)
+
+##### 那些操作会使浏览器立即重排
+
+- offsetTop, offsetLeft, offsetWidth, offsetHeight
+- scrollTop/Left/Width/Height
+- clientTop/Left/Width/Height
+- getComputedStyle(), or currentStyle in IE
+
+##### 如何最小化重排重绘
+
+- 不要逐个改变样式，通过改变类名
+- 使用离线操作，凑够一堆样式修改后统一重排重绘 documentFragment
+- 不要频繁的获取、计算样式，更不要 set get同时进行
+- Copy element 然后在 element 的副本上进行修改后，在正式的标签进行替换
+- 通过 display none 隐藏元素后进行足够多的操作后，在显示。
+
+### 浏览器缓存
+
+浏览器缓存分为 `强缓存` 和 `协商缓存`
+
+- 先根据这个资源给一些 http header 判断它是否被强缓存命中，如果被强缓存命中，则直接使用强缓存。
+- 如果没有被强缓存命中，客户端会发送请求到服务器，服务器通过另一些 request header 验证资源是否被协商缓存命中，称为 http再认证，如果命中，服务器会将请求返回（不返回资源），告诉客户端直接从缓存中获取。
+- Ctrl + F5 强制刷新，浏览器会忽略所有的强缓存 和 协商缓存
+- F5 刷新，浏览器会跳过强缓存，检查协商缓存。
+
+##### 强缓存
+
+- Expires 缓存过期时间 GMT格式的时间字符串
+- Cache-Control：max-age 强缓存利用max-age 值来判断缓存资源的最大生命周期（单位秒）。
+
+##### 协商缓存
+
+- Last-Modify （资源最后更新时间，随着服务器response返回）
+- If-Modified-Since （通过比较两个时间来判断资源在两次请求期间是否有过修改，如果没有修改，则命中协商缓存）
+- ETag （表示资源内容的唯一标识，随服务器response返回）
+- If-None-Match （服务器通过比较请求头部的 If-None-Match 与 当前资源的 ETag 是否一致来判断资源是否在两次请求之间有过修改，如果没有修改，则命中协商缓存）
