@@ -129,3 +129,58 @@ Set中的对象引用都是强化类型，并不会允许垃圾回收，ES6中�
 - Map 的键可以是任意类型，而 WeakMap 的键只能是 对象类型
 - WeakMap 不能包含无引用对象，如果没有引用，则会被垃圾回收立即清除
 - WeakMap 对象不可枚举，无法获取大小
+
+### bind 函数实现
+
+```js
+Function.prototype.bind = function(oThis) {
+  if (typeof this !== 'function') {
+    throw new TypeError(`${this} is not callable`)
+  }
+
+  const arg = Array.prototype.slice(arguments, 1)
+  const self = this
+  const func = function() {}
+
+  const bindFunc =  function () {
+    // instanceof 为了防止 new 的时候报错
+    return this.apply(this instanceof func ? self : oThis, arg.concat(arguments))
+  }
+
+  func.prototype = self.prototype
+  bindFunc.prototype = new func()
+
+  return bindFunc
+}
+```
+
+### JS 防抖和节流 debounce Throttle
+
+Debounce 防抖：在事件最后一次触发 n 毫秒之内执行事件，不管事件曾被触发过多少次。
+Throttle 节流：事件在第一次触发后 n 毫秒内，不论事件是否继续被触发，都执行。
+
+#### 代码实现
+
+```js
+const base = function (fn, wait, debounce) {
+  let timer
+  return function() {
+    let context = this, args = arguments
+    if (debounce && timer) clearTimeout(timer)
+    if (debounce || !timer) {
+      timer = setTimeout(function () {
+        timer = null
+        fn.apply(context, args)
+      }, wait)
+    }
+  }
+}
+
+const debounce = function (fn, wait) {
+  base(fn, wait, true)
+}
+
+const throttle = function (fn, wait) {
+  base(fn, wait, false)
+}
+```

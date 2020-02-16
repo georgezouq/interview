@@ -14,6 +14,7 @@
 - [经典大厂前端面试题（含解析）基础篇(一)](https://juejin.im/post/5df98b825188251277365bc1)
 - [前端面试每日 3+1，以面试题来驱动学习](https://github.com/haizlin/fe-interview)
 - [(1.8w字)负重前行，前端工程师如何系统练习数据结构和算法？【上】](https://juejin.im/post/5e2f88156fb9a02fdd38a184): 区间反转
-
+- [微任务、宏任务与Event-Loop](https://juejin.im/post/5b73d7a6518825610072b42b)
+- [浏览器说：虽然都叫event loop，但是我和node不一样](https://juejin.im/post/5b0ab722f265da0dbd7a646f)
 
 
