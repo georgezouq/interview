@@ -159,6 +159,8 @@ Function.prototype.bind = function(oThis) {
 Debounce 防抖：在事件最后一次触发 n 毫秒之内执行事件，不管事件曾被触发过多少次。
 Throttle 节流：事件在第一次触发后 n 毫秒内，不论事件是否继续被触发，都执行。
 
+- [参考](https://juejin.im/entry/59aacd04518825242c423fa0): 浅谈throttle以及debounce的原理和实现
+
 #### 代码实现
 
 ```js
