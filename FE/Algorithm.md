@@ -26,3 +26,46 @@ string.replace(/\s/g, '')
 ```js
 const a = (str) => str.split(' ').join('')
 ```
+
+### 二分查找
+
+很简单，就是控制好左侧和右侧的指针，然后使用中间的跟 target 对比。如果一致 就是当前中间值，如果小 则说把左侧指针移动到中间指针后一个，继续前面的操作
+
+#### 递归
+
+```js
+let data = [12, 24, 32, 43, 52, 61, 74]
+function splitFind(arr, target) {
+  const time = arr.length / 2
+  const first = arr[time]
+
+  for (let i = 0; i < arr.length; i++) {
+  
+  }
+}
+
+console.log('result:', splitFind(data, 61))
+```
+
+#### 循环
+
+```js
+var search = function(nums, target) {
+    let left = 0
+    let right = nums.length - 1
+
+    while (left <= right) {
+        let half = left + Math.floor((right - left) / 2)
+        let cur = nums[half]
+
+        if (cur === target) return half
+        if (cur > target) {
+            right = half - 1;
+        } else if (cur < target) {
+            left = half + 1
+        }
+    }
+
+    return -1
+}
+```

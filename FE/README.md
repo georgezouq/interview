@@ -7,6 +7,7 @@
 - [网络](./Network.md)
 - [Vue](./Vue.md)
 - [React](./React.md)
+- [高级前端](./senior.md)
 
 ## 其他资源
 
