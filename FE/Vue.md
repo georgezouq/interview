@@ -1,6 +1,24 @@
 ## VUE
 
+### 什么是 MVVM
+
+    MVVM Model-View-ViewModel 是一种设计思想，可以在Model 中定义数据修改和 操作的业务逻辑；View 代表 UI组件，他负责将数据模型转化成 UI 展现出来，ViewModel 是一个同步 View 和 Model 的对象。
+
+- 在 MVVM 架构下，View 和 Model 之间并没有直接的联系，而是通过 ViewModel 进行交互，Model 和 ViewModel 之间的交互是双向的，因此 View 数据的变化会同步到 Model 中，而 Model 数据也会立即反应到 View 上。
+- ViewModel 通过双向数据绑定把 View 层 和 Model 层链接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM，不需要关注数据状态的同步问题，负责的数据状态维护完全由 MVVM 来统一管理
+
+### Vue 的优点是什么
+
+- 低耦合
+- 可重用性
+- 可测试
+
 ### Vue 生命周期
+
+- 创建前后：beforeCreate 阶段，vue实例的挂载元素 el 和 数据对象data 都为 undefined，还未初始化，在 created 阶段，vue实例的数据对象 data 有了，el 还没有
+- 载入前后：在 beforeMount 阶段，vue 实例的 $el 和 data 都初始化来，但还是挂载之前为虚拟的dom节点，data.message 还未替换。在 mounted 阶段，vue 实例挂载完成，data.message 成功渲染
+- 更新前后
+- 销毁前后
 
 - beforeCreated
 - created

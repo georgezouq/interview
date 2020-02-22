@@ -58,11 +58,11 @@ render () {
 
 ### react diff 原理
 
-把树形结构按照层级分解，只比较同级元素。
-给列表结构的每个单元添加唯一的 key 属性，方便比较。
-React 只会匹配相同 class 的 component（这里面的 class 指的是组件的名字）
-合并操作，调用 component 的 setState 方法的时候, React 将其标记为 dirty.到每一个事件循环结束, React 检查所有标记 dirty 的 component 重新绘制.
-选择性子树渲染。开发人员可以重写 shouldComponentUpdate 提高 diff 的性能。
+- 把树形结构按照层级分解，只比较同级元素。
+- 给列表结构的每个单元添加唯一的 key 属性，方便比较。
+- React 只会匹配相同 class 的 component（这里面的 class 指的是组件的名字）
+- 合并操作，调用 component 的 setState 方法的时候, React 将其标记为 dirty.到每一个事件循环结束, React 检查所有标记 dirty 的 component 重新绘制.
+- 选择性子树渲染。开发人员可以重写 shouldComponentUpdate 提高 diff 的性能。
 参考：React 的 diff 算法
 
 ### React 中 refs 的作用是什么？
@@ -248,20 +248,25 @@ Dispatcher 收到 Action，要求 Store 进行相应的更新
 Store 更新后，发出一个"change"事件
 View 收到"change"事件后，更新页面
 
-
 ### React 项目用过什么脚手架（本题是开放性题目）
 
 creat-react-app Yeoman 等
 
 ### 了解 redux 么，说一下 redux 吧
 
-
 redux 是一个应用数据流框架，主要是解决了组件间状态共享的问题，原理是集中式管理，主要有三个核心方法，action，store，reducer，工作流程是 view 调用 store 的 dispatch 接收 action 传入 store，reducer 进行 state 操作，view 通过 store 提供的 getState 获取最新的数据，flux 也是用来进行数据操作的，有四个组成部分 action，dispatch，view，store，工作流程是 view 发出一个 action，派发器接收 action，让 store 进行数据更新，更新完成以后 store 发出 change，view 接受 change 更新视图。Redux 和 Flux 很像。主要区别在于 Flux 有多个可以改变应用状态的 store，在 Flux 中 dispatcher 被用来传递数据到注册的回调事件，但是在 redux 中只能定义一个可更新状态的 store，redux 把 store 和 Dispatcher 合并,结构更加简单清晰
 新增 state,对状态的管理更加明确，通过 redux，流程更加规范了，减少手动编码量，提高了编码效率，同时缺点时当数据更新时有时候组件不需要，但是也要重新绘制，有些影响效率。一般情况下，我们在构建多交互，多数据流的复杂项目应用时才会使用它们
 
-
 ### redux 有什么缺点
-
 
 一个组件所需要的数据，必须由父组件传过来，而不能像 flux 中直接从 store 取。
 当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新 render，可能会有效率影响，或者需要写复杂的 shouldComponentUpdate 进行判断。
+
+### 在生命周期中的哪一步你应该发起 Ajax 请求
+
+componentDidMount　
+
+- React 调和算法 Fiber 会通过开始或停止渲染的方式优化应用性能，其会影响到 componentWillMount 的触发次数。对于 componentWillMount 这个生命周期函数的调用次数会变得不确定，React 可能会多次频繁调用 componentWillMount。如果我们将 Ajax 请求放到 componentWillMount 函数中，那么显而易见其会被触发多次，自然也就不是好的选择。
+- 如果我们将 Ajax 请求放置在其他生命周期函数中，并不能保证请求仅在组件挂载完毕后才会要求响应。如果我们的数据请求在组件挂载完成之前就完成了，并调用的 setState 函数，对于未挂载的组件则会报错，componentDidMount 函数中进行Ajax 可以避免这个问题。
+
+
