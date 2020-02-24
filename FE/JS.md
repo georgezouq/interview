@@ -40,27 +40,30 @@ string.reverse().removeFirstChar(removedChar).reverse()
 
 ### 闭包的作用
 
-闭包是在某个作用域内定义的函数，它可以访问这个作用域内的所有变量。闭包作用域链通常包括三个部分：
+MDN 关于闭包的定义：闭包是指那些能够访问自由变量的函数
 
-- 函数本身作用域。
-- 闭包定义时的作用域。
-- 全局作用域。
+自由变量：函数中使用的， 但既不是函数参数也不是函数的局部变量的变量。
 
-闭包常见用途：
+- 理论角度：所有函数，因为他们都在创建的时候就将上层上下文的数据保存起来了，哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量，这个时候使用最外层作用域
+- 实践角度：
+    - 及时创建他的上下文已经销毁，他仍能存在
+    - 在代码中引用了自由变量
+
+##### 特性
+
+- 函数嵌套函数
+- 函数内部可以引用函数外部的参数和变量（由于链式作用域）
+- 参数和变量不会被垃圾回收机制回收
+
+##### 闭包常见用途
 
 - 创建特权方法用于访问控制
 - 事件处理程序及回调
 
-### CSS3 新增伪类
-
-- `:first-child` `:last-child` 表示子元素结构关系
-- `:nth-child()` `:nth-last-child()` 用来控制奇数、偶数行的
-- `:first-of-type` `:last-of-type` 表示一组兄弟元素中其类型的第一个元素
-- `:nth-of-type` `:nth-last-of-type` 匹配那些在相同兄弟节点中的位置与模式
-- `root` html跟元素
-- `:not()` 否定选择器
-- `:only-child` 只有一个子元素才会生效　
-- `:empty` 选择连空格都没有的元素　
+##### 优缺点
+      
+- 优点：在内存中维持了一个变量，由于闭包，无法通过其他途径访问，从而达到保护变量安全的效果
+- 缺点：参数和变量不会被垃圾回收机制回收
 
 ### Let 与 Var 的区别
 
@@ -75,7 +78,7 @@ string.reverse().removeFirstChar(removedChar).reverse()
 ### CommonJS 中的 require/exports 和 ES6 中的 import/export 有何区别
 
 - CommonJS 的 require 加载时执行，缓存本地，而import 在执行时执行，不会缓存
-- CommonJS 的 module 代表整个模块，`module.exports` 代表模块的输出，所有在 require 的时候实际上 require 的是 module 的 exports 属性
+- CommonJS 的 module 代表整个模块，`module.exports` 代表模块的输出，所以在 require 的时候实际上 require 的是 module 的 exports 属性
     export 命令是对外的接口，必须与模块内部变量建立一对一关系。
 
 ### 一行代码实现数组去重　
@@ -129,30 +132,6 @@ Set中的对象引用都是强化类型，并不会允许垃圾回收，ES6中�
 - Map 的键可以是任意类型，而 WeakMap 的键只能是 对象类型
 - WeakMap 不能包含无引用对象，如果没有引用，则会被垃圾回收立即清除
 - WeakMap 对象不可枚举，无法获取大小
-
-### bind 函数实现
-
-```js
-Function.prototype.bind = function(oThis) {
-  if (typeof this !== 'function') {
-    throw new TypeError(`${this} is not callable`)
-  }
-
-  const arg = Array.prototype.slice(arguments, 1)
-  const self = this
-  const func = function() {}
-
-  const bindFunc =  function () {
-    // instanceof 为了防止 new 的时候报错
-    return this.apply(this instanceof func ? self : oThis, arg.concat(arguments))
-  }
-
-  func.prototype = self.prototype
-  bindFunc.prototype = new func()
-
-  return bindFunc
-}
-```
 
 ### JS 防抖和节流 debounce Throttle
 

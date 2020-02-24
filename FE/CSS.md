@@ -182,6 +182,17 @@
 - z-index: -9999999
 - position: relative; left: -100%;
 
+### CSS3 新增伪类
+
+- `:first-child` `:last-child` 表示子元素结构关系
+- `:nth-child()` `:nth-last-child()` 用来控制奇数、偶数行的
+- `:first-of-type` `:last-of-type` 表示一组兄弟元素中其类型的第一个元素
+- `:nth-of-type` `:nth-last-of-type` 匹配那些在相同兄弟节点中的位置与模式
+- `root` html跟元素
+- `:not()` 否定选择器
+- `:only-child` 只有一个子元素才会生效　
+- `:empty` 选择连空格都没有的元素　
+
 ### CSS 选择器有哪些， 哪些属性可以继承
 
 - id 选择器 `#header`

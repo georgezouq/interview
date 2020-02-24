@@ -1,5 +1,93 @@
 # 高级前端工程师面试题
 
+
+### bind 函数实现
+
+```js
+Function.prototype.bind = function(oThis) {
+  if (typeof this !== 'function') {
+    throw new TypeError(`${this} is not callable`)
+  }
+
+  const arg = Array.prototype.slice(arguments, 1)
+  const self = this
+  const func = function() {}
+
+  const bindFunc =  function () {
+    // instanceof 为了防止 new 的时候报错
+    return this.apply(this instanceof func ? self : oThis, arg.concat(arguments))
+  }
+
+  func.prototype = self.prototype
+  bindFunc.prototype = new func()
+
+  return bindFunc
+}
+```
+
+### Call 函数实现
+ 
+```js
+Function.prototype.call2 = function (context) {
+    var context = context || window;
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']');
+    }
+
+    var result = eval('context.fn(' + args +')');
+
+    delete context.fn
+    return result;
+}
+
+// 测试一下
+var value = 2;
+
+var obj = {
+    value: 1
+}
+
+function bar(name, age) {
+    console.log(this.value);
+    return {
+        value: this.value,
+        name: name,
+        age: age
+    }
+}
+
+bar.call2(null); // 2
+
+console.log(bar.call2(obj, 'kevin', 18));
+```
+
+### apply的模拟实现
+
+```js
+Function.prototype.apply = function (context, arr) {
+    var context = Object(context) || window;
+    context.fn = this;
+
+    var result;
+    if (!arr) {
+        result = context.fn();
+    }
+    else {
+        var args = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            args.push('arr[' + i + ']');
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+
+    delete context.fn
+    return result;
+}
+```
+
 ### 微任务、宏任务与Event-Loop
 
 - 宏任务: 一套任务
