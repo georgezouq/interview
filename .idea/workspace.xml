@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="Add new FE question">
-      <change afterPath="$PROJECT_DIR$/FE/hand-write/Promise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/Secure.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/Algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/Algorithm.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/CSS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/CSS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/JS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/JS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/百度.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/company/百度.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +56,12 @@
       <workItem from="1581818890624" duration="9164000" />
       <workItem from="1581994674809" duration="4000" />
       <workItem from="1582075373125" duration="125000" />
-      <workItem from="1582159879575" duration="12965000" />
+      <workItem from="1582159879575" duration="13353000" />
+      <workItem from="1582252781257" duration="7044000" />
+      <workItem from="1582419575117" duration="4477000" />
+      <workItem from="1582504695159" duration="258000" />
+      <workItem from="1582590646326" duration="108000" />
+      <workItem from="1582590771848" duration="5437000" />
     </task>
     <task id="LOCAL-00001" summary="Add FE interview question">
       <created>1581228148469</created>
@@ -96,7 +98,35 @@
       <option name="project" value="LOCAL" />
       <updated>1582159987303</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add new FE question">
+      <created>1582206755817</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1582206755817</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add new FE question">
+      <created>1582337743239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1582337743239</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add new FE question">
+      <created>1582502979111</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1582502979111</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add new FE question">
+      <created>1582597300874</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582597300874</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
