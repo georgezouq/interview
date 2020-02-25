@@ -107,3 +107,8 @@ console.log(Book.name);  // 《vue权威指南》
 
 ##### 实现双向数据绑定
 
+### Vue 核心原理
+
+- DocumentFragment
+
+Web API，大批量 DOM 节点的代名词

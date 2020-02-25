@@ -310,6 +310,55 @@ ES6  与 CommonJS 模块的差异
 1. CommonJS输出 的 是值的拷贝 ES6 模块输出的是引用
 2. CommonJS 模块是运行时加载，ES6是编译时输出接口
 
+### JavaScript 的四种继承方式
+
+- 原型链继承
+
+```js
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+
+Person.prototype.say = function() {
+    alert(this.name+" is garbage!");
+}
+
+function Main() {}
+
+Man.prototype = new Person('霍顿',22);//这句是重点，敲黑板
+```
+
+- 构造函数继承
+
+```js
+function Main(name,age) {
+  Persion.apply(this, arguments)
+}
+```
+
+- （原型链 + 构造函数）组合继承
+
+```js
+function Man(name, age) {
+  Person.apply(this, arguments)
+}
+
+Man.prototype = new Person()
+```
+
+- 寄生继承
+
+```js
+function Main(name, age) {
+  Person.apply(this, arguments)
+}
+
+Man.prototype = Object.create(Person.prototype)
+Man.prototype.constructor = Man
+```
+
+- ES6 中继承
 
 ### ES6
 
@@ -372,13 +421,86 @@ let obj = {
 }
 ```
 
-#### for...in 和 for...of 的区别
-
 #### Class / extends 有什么用
 
 ES6 的 class 可以看作只是一个 ES5生成实例对象的构造函数的语法糖，让对象原型写法更清晰，对象是梨花是一种面向对象编程。Class 类 可以通过 extends 实现继承。
-
+事实上
 - 类内部定义的所有方法都是不可枚举的
 - ES6 的 class 类必须用 new 命令操作
 - ES6 的 class 类不存在变量提升，必须先定义class 之后才能实例化
 - ES5 的继承，实质是创造子类的实例对象 this，然后在将父类的属性和方法，加到this 上。ES6 的继承机制完全不同，实质是先将父类实例对象的属性和方法，加到this上面，（所以必须先调用super 方法），然后在用子类的构造函数修改 this
+
+#### Generator
+
+Generator 是 ES6 提供的一种异步编程解决方案，可以理解为是一个状态机，内部封装了多个状态/
+
+执行Generator 会返回一个遍历器对西那个，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。
+
+特征
+
+- function关键词与函数名之间有 *
+- 函数体内部使用 yield  变大时，定义不同的内部状态 （yield 产出）
+
+```js
+function* helloWorldGenerator() {
+  yield 'hello';
+  yield 'world';
+  return 'ending';
+}
+
+var hw = helloWorldGenerator();
+```
+
+`helloWorldGenerator` 函数有 `hello`、`world` 及 `ending` 三个状态。
+
+调用 `Generator` 函数后，该函数 并不执行，返回的 也不是函数运行结果，而是指向内部状态的指针对象，也就是 `Iterator`。必须调用 `next` 方法使指针移动到下一个状态。也就是，每次调用next 方法，内部指针就 从函数头部或上一次 停下来的地方开始执行，直到遇到下一个 `yield` 或 `return` 为止
+
+##### 与 Iterator 接口的关系
+
+```js
+var myIterable = {};
+myIterable[Symbol.iterator] = function* () {
+  yield 1;
+  yield 2;
+  yield 3;
+};
+
+[...myIterable] // [1, 2, 3]
+```
+
+##### next 方法的参数
+
+yield 表达式本身没有返回值，或者说总是返回 undefined。next 方法可以带一个参数，该参数会被当作上一个 yield 表达式的返回值。
+
+#### for...of
+
+for...of 在可迭代对象 (Array, Map, Set, String, TypedArray, arguments, Generator, Iterator) 上创建一个迭代循环，调用自定义迭代 钩子，并未不同属性 的值执行 语句
+
+[参考 MDN for...of](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...of)
+
+#### for...of 与 for...in 的区别
+
+- `for...in` 语句以任意顺序迭代对象 的可枚举属性
+-`for...of` 语句遍历可迭代对象定义迭代数据
+
+```js
+Object.prototype.objCustom = function() {}; 
+Array.prototype.arrCustom = function() {};
+
+let iterable = [3, 5, 7];
+iterable.foo = 'hello';
+
+for (let i in iterable) {
+  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
+}
+
+for (let i in iterable) {
+  if (iterable.hasOwnProperty(i)) {
+    console.log(i); // logs 0, 1, 2, "foo"
+  }
+}
+
+for (let i of iterable) {
+  console.log(i); // logs 3, 5, 7
+}
+``` 

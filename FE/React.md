@@ -269,4 +269,142 @@ componentDidMount　
 - React 调和算法 Fiber 会通过开始或停止渲染的方式优化应用性能，其会影响到 componentWillMount 的触发次数。对于 componentWillMount 这个生命周期函数的调用次数会变得不确定，React 可能会多次频繁调用 componentWillMount。如果我们将 Ajax 请求放到 componentWillMount 函数中，那么显而易见其会被触发多次，自然也就不是好的选择。
 - 如果我们将 Ajax 请求放置在其他生命周期函数中，并不能保证请求仅在组件挂载完毕后才会要求响应。如果我们的数据请求在组件挂载完成之前就完成了，并调用的 setState 函数，对于未挂载的组件则会报错，componentDidMount 函数中进行Ajax 可以避免这个问题。
 
+### React v16 新特性
 
+##### fragments 返回片段类型
+
+```jsx
+// 不需要再把所有的元素绑定到一个单独的元素中了
+render() {
+  return [
+    // 别忘记加上key值
+    <li key='A'>first item</li>,
+    <li key='B'>second item</li>,
+    <li key='A'>third item</li>
+  ];
+}
+```
+
+##### error boundaries (处理错误 )
+
+更弹性的错误处理策略。默认情况下，如果一个错误是在组件的渲染 或者生命周期方法中被抛出，整个组件结构就会从跟节点中卸载。这种方式阻碍了被坏数据的展示，然而却不是很好的用户体验。
+
+对于这种问题可以使用 error boundaries 来处理，专门用来抓取其下子组件错误并展示错误信息
+
+一个类组件定义新的生命周期 `componentDidCatch(error,  info)`  之后，他就变成了一个 `error boundary`
+
+```js
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children;
+  }
+}
+```
+
+可以像正常的组件一样使用：
+
+```html
+<ErrorBoundary>
+  <MyWidget />
+</ErrorBoundary>
+```
+
+**error boundaries only catch errors in the components below them in the tree.**
+
+##### portals 挂载方式
+
+```js
+render() {
+  // React does *not* create a new div. It renders the children into `domNode`.
+  // `domNode` is any valid DOM node, regardless of its location in the DOM.
+  return ReactDOM.createPortal(
+    this.props.children,
+    domNode,
+  );
+}
+```
+
+##### Customer DOM Attribute (支持自定义 DOM 属性)
+##### Improved Server-side Rendering (提升服务端渲染性能)
+##### Reduced File Size (减少文件大小)
+##### 新的生命周期方法
+
+- componentWillMount --> componentDidMount
+- componentWillUpdate --> componentDidUpdate
+- componentWillReceiveProps --> 新方法 `static getDerivedStateFromProps`
+
+```js
+static getDerivedStateFromProps(nextProps, prevState) {
+  if(nextProps.currentRow === prevState.lastRow) {
+    return null;
+  }
+ 
+  return {
+    lastRow: nextProps.currentRow,
+    isCrollingDown: nextProps.curentRow > prevState.lastRow
+  }
+}
+```
+
+##### 新的 Context API
+
+- `React.createContext` 方法用于创建一个 `Context` 对象。该对象包含 `Provider` 和 `Consumer` 两个属性，分别为两个 `React` 组件。
+- `Provider` 组件。用在组件树中更外层的位置。它接受一个名为 `value` 的 `prop`，其值可以是任何 `JavaScript` 中的数据类型。
+- `Consumer` 组件。可以在 `Provider` 组件内部的任何一层使用。它接收一个名为 `children` 值为一个函数的 `prop`。这个函数的参数是 `Provider` 组件接收的那个 `value prop` 的值，返回值是一个 `React` 元素（一段 `JSX` 代码)
+
+### React 受控组件与非受控组件
+
+React 推荐使用受控组件处理表单数据。在一个受控组件中，表单数据是由 React 组件来管理的。另一种替代方案是使用非受控组件，这时表单数据将交由 DOM 节点处理。
+
+##### 受控组件
+
+在 HTML 中，表单元素(如 `input` `textarea` `select` ) 之类的表单元素通常自己维护 `state`，并根据用户输入进行更新。而在 `React` 中，可变状态 （`mutable state`），通常保存在组件的 `state` 属性中，并且只能通过 `setState` 来更新
+
+我们可以吧两者结合起来，使 `React` 的 `state` 成为 "唯一数据源"。渲染表单的 `React` 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的变淡数据元素叫做 `受控组件`
+
+##### 非受控组件
+
+编写一个非受控组件，而不是为每个状态更新都编写数据处理函数，你可以使用 ref 来从 DOM 节点中获取表单数据。
+
+```jsx harmony
+class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.input = React.createRef();
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.current.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" ref={this.input} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+```

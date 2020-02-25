@@ -69,3 +69,18 @@ var search = function(nums, target) {
     return -1
 }
 ```
+
+### 找出数组中连续重复的元素的起始索引
+
+```js
+var arr = [1,2,3,9,9,9,9,6,7,8,10,10,10,15]
+var dic = {}
+for (k in arr){
+     if (!dic[arr[k]]){dic[arr[k]] = [k]}
+     else{dic[arr[k]][1] = k}
+ }
+for (k in dic){if (dic[k].length==1){delete(dic[k])}}
+
+console.log(dic)
+// { '9': [ '3', '6' ], '10': [ '10', '12' ] }
+```
