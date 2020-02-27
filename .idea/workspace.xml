@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="Add new FE question">
-      <change afterPath="$PROJECT_DIR$/FE/Secure.md" afterDir="false" />
+    <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/FE/company/Boss直聘.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/字节跳动.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/小米.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/新浪.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/知乎.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/腾讯.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/钉钉.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/雪球.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/company/黄油相机.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/hand-write/Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/CSS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/CSS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FE/company/百度.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/company/百度.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Promise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +76,9 @@
       <workItem from="1582419575117" duration="4477000" />
       <workItem from="1582504695159" duration="258000" />
       <workItem from="1582590646326" duration="108000" />
-      <workItem from="1582590771848" duration="5437000" />
+      <workItem from="1582590771848" duration="6792000" />
+      <workItem from="1582776694751" duration="53000" />
+      <workItem from="1582776782741" duration="7682000" />
     </task>
     <task id="LOCAL-00001" summary="Add FE interview question">
       <created>1581228148469</created>
@@ -126,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582597300874</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add new FE question">
+      <created>1582597736217</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1582597736217</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

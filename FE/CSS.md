@@ -232,3 +232,52 @@ inherit属性
 
 Web页面的可视化 CSS渲染的 一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
 
+### 如何理解rem布局
+
+我们用js很容易动态的设置html的font-size恒等屏幕的1/10;我们可以在页面dom ready、resize和屏幕旋转中设置：
+
+```js
+document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+```
+
+如何把设计稿的像素单位换成以 rem 为单位呢？可以用一个比例来计算：如设计稿宽度为 750px，某个元素量得 75px，那么：
+
+75px/750px = 计算所得 rem/10rem, 所以计算所得 rem=75px; 所以我们在样式中写 width:1rem；实际宽度是 75px；同理，如果设计稿总宽度是 640px, 则 1rem=64px。
+
+### CSS实现正方形div
+
+要求：宽度随页面拓展
+
+1. vw 单位
+
+1vw = 1% viewport width
+
+```html
+<div class="vw">hello</div>
+<style>.vw { width: 50%; height: 50vw; background: #ccc; } </style>
+```
+
+2. padding-bottom
+
+padding 百分比相对于父元素宽度计算
+
+```html
+<div class="placeholder"></div>
+<style>.placeholder { width: 100%; padding-bottom: 100%; height: 0; }</style>
+```
+
+3. padding-bottom :after absolute
+
+```html
+<div class="square">
+    <div class="content">
+        Hello!
+    </div>
+</div>
+
+<style>
+.square { width: 50% background: #ccc; }
+.square:after { content: ""; display: block; padding-bottom: 100%; }
+.content { position: absolute; width: 100%; height: 100%; }
+</style>
+```
