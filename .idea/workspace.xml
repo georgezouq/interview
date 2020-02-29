@@ -2,24 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FE/company/Boss直聘.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/字节跳动.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/小米.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/新浪.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/知乎.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/腾讯.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/钉钉.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/雪球.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/company/黄油相机.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FE/hand-write/Test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/hand-write/Adaptar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/CSS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/CSS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/company/百度.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/company/百度.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/蚂蚁金服.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/company/蚂蚁金服.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FE/hand-write/Promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Promise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +65,7 @@
       <workItem from="1582590646326" duration="108000" />
       <workItem from="1582590771848" duration="6792000" />
       <workItem from="1582776694751" duration="53000" />
-      <workItem from="1582776782741" duration="7682000" />
+      <workItem from="1582776782741" duration="27398000" />
     </task>
     <task id="LOCAL-00001" summary="Add FE interview question">
       <created>1581228148469</created>
@@ -150,7 +137,21 @@
       <option name="project" value="LOCAL" />
       <updated>1582597736217</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add new FE question for company">
+      <created>1582817157836</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582817157836</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add new FE question for company">
+      <created>1582818981085</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1582818981085</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +173,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add FE interview question" />
     <MESSAGE value="Add new FE question" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new FE question" />
+    <MESSAGE value="Add new FE question for company" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new FE question for company" />
   </component>
 </project>
