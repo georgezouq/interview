@@ -30,6 +30,7 @@
 
 ### 其他资源
 
+- [挑战一轮大厂后的面试总结 (含六个方向) - javascript 篇(万字长文)](https://juejin.im/post/5e523e726fb9a07c9a195a95)
 - [2020 前端面试 | 第一波面试题总结](https://juejin.im/post/5e3d898cf265da5732551a56)
 - [经典大厂前端面试题（含解析）基础篇(一)](https://juejin.im/post/5df98b825188251277365bc1)
 - [前端面试每日 3+1，以面试题来驱动学习](https://github.com/haizlin/fe-interview)

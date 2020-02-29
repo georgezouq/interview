@@ -1,5 +1,91 @@
 # JS 面试题
 
+### JS 原型链
+
+![](../images/prototype1.png)
+
+原型链重点分为三个部分
+
+- __proto__
+    - prototype
+- prototype
+    - __proto__
+    - constructor
+    
+![](../images/prototype2.png)
+
+对于实例对象来说，原型链的作用：
+
+- 实现继承
+- 属性查找
+- 实例类型判断：是否属于某类对象
+
+##### 构造方法
+
+构造方法就是一个可以被 new 的方法（箭头函数不能被 new）
+
+实现一个模拟的 `new`
+
+```js
+function ObjectFactory () {
+  const constructor = [].shift.call(arguments)
+  const res = {}
+  res.__proto__ = constructor.prototype
+  const ret = constructor.apply(res, arguments)
+  return typeof ret === 'object' ? ret : res
+}
+```
+
+### typeof 和 instanceof 的区别
+
+- typeof 用于比较基础数据类型和引用类型，返回值有 "number"、"string"、"boolean"、"null"、"function" 和 "undefined"、"symble"、"object"
+- instanceof 对原型链中的 `__proto__` 逐层向上进行查找，通过instanceof 可以判断一个事例的父类型 和祖先类型的实例
+
+### 数据类型
+
+- 基本类型：Null Undefined Number String Bigint Symbol Boolean
+- 引用类型：Object
+
+基础类型 储存在栈内存中 | 大小是固定 | 在栈中可以快速查找 | 对值操作
+引用类型 储存在堆内存中 | 大小不固定 | 栈内存储存内存地址 | 对地址操作
+
+### NaN 指的是什么
+
+NaN 属性代表非数字值的特殊值，该 属性用于表示某值不是数字
+
+```js
+typeof(NaN) // "number"
+NaN == NaN // false
+```
+
+### 什么是包装对象
+
+包装对象，只要是为了便于基本类型调用对象的方法。String Boolean Number
+
+### 什么是作用域链
+
+作用域链分为两种
+
+- 全局作用域：绑定在 window 上，为全部作用域链 的最顶层
+- 函数作用域：函数执行的时候有一个执行栈，函数执行的时候会创建执行环境，就是执行上下文对象，上下文对象中有一个大对象，保存函数执行的时候所有可能用到的变量/函数，在使用变量时就会访问这个大对象，这个对象随着函数的调用而创建，随着函数的执行结束出栈而销毁，这个大对象组成的链就叫作用域链。
+ 
+```js
+function test() {
+    for (var index = 0; index < 3; index++) {
+        setTimeout(() => {
+            console.log('index:' + index)
+        })
+    }
+}
+
+test() 
+//  index:3
+//  index:3
+//  index:3
+```
+
+因为JS 的时间循环机制，定时器的回调肯定在循环结束后执行，那时候index已经等于3了。
+
 ### 写一个方法把下划线命名转换成大驼峰命名
 
 ```js
@@ -65,15 +151,124 @@ MDN 关于闭包的定义：闭包是指那些能够访问自由变量的函数
 - 优点：在内存中维持了一个变量，由于闭包，无法通过其他途径访问，从而达到保护变量安全的效果
 - 缺点：参数和变量不会被垃圾回收机制回收
 
-### Let 与 Var 的区别
+### Let、Var 和 const 的区别
 
-- let 声明只在当前代码块内，var 的声明会被提升到全局中
-- let 不可重复声明
+- var: 解析器在解析js的时候，会将脚本都扫描一遍，将变量的生命提前到代码块的顶部，赋值还是在原先的为止，若在赋值前使用，就会出现展示性死区 undefined
+- let: 声明只在当前代码块内，var 的声明会被提升到全局中
+- const: 不可重复声明
 
 ##### 为什么 var 可以重复声明
 
 编译器会对代码进行拆解，他会使用LHS 和 RHS 查询解析 = 左右两边的代码。当引擎执行 `var head = 2`的时候，他会首先执行 `var head` 声明变量，声明时会到作用域中查找是否有 `head` 这个变量，如果没有，则新建一个变量命名为 `head`。如果有，则将变量赋值为2
 [参考](https://www.cnblogs.com/neil080320/p/6529679.html)
+
+### 数据属性 和 访问器属性的区别
+
+Object.defineProperty
+
+1. 数据属性（数据描述符）
+
+- [[Configurable]]：表示能否通过 delete 删除属性从而定义属性，能否修改属性的特征，或者 能否把属性修改为访问器属性
+- [[Enumerable]]: 表示能否通过 for-in 循环
+- [[value]]: 属性值
+
+```js
+var p = {
+    name:'dage'
+}
+Object.defineProperty(p,'name',{
+    value:'xxx'
+})
+p.name = '4rrr'
+console.log(p.name) // 4rrr
+Object.defineProperty(p,'name',{
+    writable:false,
+    value:'again'
+})
+p.name = '4rrr'
+console.log(p.name) // again
+```
+
+2. 访问器属性
+
+可以理解为取值和赋值前的拦截器
+
+[[Enumerable]]：表示能否通过 for-in 循环返回属性，默认 false
+
+[[Get]]：在读取属性时调用的函数。默认值为 undefined
+
+[[Set]]：在写入属性时调用的函数。默认值为 undefined
+
+```js
+var p = {
+    name:''
+}
+Object.defineProperty(p,'name',{
+    get:function(){
+        return 'right yeah !'
+    },
+    set:function(val){
+        return 'handsome '+val
+    }
+})
+p.name = `xiaoli`
+console.log(p.name) // right yeah !
+```
+
+### toString 和 valueOf
+
+```js
+let o = function () {
+    this.toString = () => {
+        return 'my is o,'
+    }
+    this.valueOf = () => {
+        return 99
+    }
+}
+let n = new o()
+console.log(n + 'abc') // 99abc
+console.log(n * 10) // 990
+// 有没有很酷炫
+```
+
+当这两个函数同时存在时候，会先调用 valueOf ，若返回的不是原始类型，那么会调用 toString 方法，如果这时候 toString 方法返回的也不是原始数据类型，那么就会报错 TypeError: Cannot convert object to primitive value 如下
+
+### 箭头函数有没有 arguments 对象?
+
+- 在 浏览器中是没有的
+- 在 node 中有 arguments 但是只能获取到长度
+
+### JS 处理二进制
+
+ArrayBuffer：用来表示通用的长度固定的二进制缓冲区，作为内存区域，可以存放多种类型的数据，他不能直接读写，只能通过视图类读写。
+
+### 异步有哪些解决方案
+
+- 回调函数：通过嵌套调用实现
+- Generator：异步任务的容器，生成器本质上是一个特殊的迭代器，Generator 执行后返回一个指针对象，调用该对象的next 方法将指针移动到下一个位置。返回一个对象 {value: 执行结果, done: 是否结束}
+- Promise
+- GO：Generator + Promise
+- async/await
+
+### CO库
+
+co 用 promise 的特性，将 Generator 包裹在 Promise 中，然后循环执行 next 函数，把 next 函数返回的的 value  用 promise 包装，通过 then.resolve 调用下一个 next 函数，并将值传递给 next 函数，直到 done 为 true，最后执行包裹 Generator 函数的 resolve。
+
+### JS 事件循环
+
+- [js事件循环](https://cloud.tencent.com/developer/article/1332957)
+
+事件循环的主要部分有 一个栈、两个队列、一套幕后线程。
+
+开始的时候，执行栈中会执行全部的同步代码，同步代码中如果有异步函数调用如 setTimeout、http请求等，会将对应的请求放到幕后线程去处理。当幕后线程处理完异步请求，比如setTimeout 的时间到了，或者http请求获得响应，并且当执行栈中全部执行完毕（为空），会触发一次事件循环，将执行宏任务队列中第一个任务，任务执行完毕，执行微任务队列中的全部任务。微任务队列全部执行完成为空后，事件循环再次启动，执行下一个宏任务。如果当前任务队列为空，他会一直循环等待任务的到来，这就叫任务循环
+
+- 宏任务（比较大型的工作）：setTimeout setInterval 用户交互操作 UI渲染
+- 微任务（比较小型的工作）：Promise process.nextTick
+
+注意
+
+在执行微任务的时候，如果微任务队列中一直 持续不断的有微任务，那么就会导致主线程一直执行，没有办法进入下一个事件循环。导致我们无法进行 IO请求/UI渲染/ajax 请求等。应该避免这种情况。
 
 ### CommonJS 中的 require/exports 和 ES6 中的 import/export 有何区别
 
@@ -333,7 +528,7 @@ Man.prototype = new Person('霍顿',22);//这句是重点，敲黑板
 
 ```js
 function Main(name,age) {
-  Persion.apply(this, arguments)
+  Person.apply(this, arguments)
 }
 ```
 
@@ -504,3 +699,64 @@ for (let i of iterable) {
   console.log(i); // logs 3, 5, 7
 }
 ``` 
+
+### 线程和 进程的区别
+
+### 函数式编程
+
+##### 柯里化 Currying
+
+> 柯里化 是把接受多个参数的函数变成接受一个单一参数（最初函数的第一个参数）的函数，并返回接受余下的参切返回结果的心函数的技术
+
+特点
+
+- 参数复用
+- 业务解偶 调用时机灵活
+- 延迟执行 部分求值
+
+```js
+let curry2 = (fn, ...args) => {
+  let len = fn.length
+  return (...rest) => {
+    let allArgs = args.slice(0)
+    console.log('allArgs:', allArgs, 'len:', len)
+    allArgs.push(...rest)
+    if (allArgs.length < len) {
+      return curry2.call(this, fn, ...allArgs)
+    } else {
+      return fn.apply(this, allArgs)
+    }
+  }
+}
+```
+
+### 线程和进程的区别
+
+- 进程：一个动态过程，是一个活动的实体。简单来说，一个应用程序的运行可以看作是一个进程
+- 线程：程序执行流的最小执行单位，是进程中的实际运作单位
+
+### 什么是尾递归？
+
+函数内部循环调用其自身的函数是递归函数。若函数没有执行完毕，执行栈中会一直保持着这个函数的相关变量，一直占用内存，当递归次数过大的时候，就可能会出现内存溢出，也叫爆栈，页面可能会卡死。所以为了避免出现这种情况，可以采用尾递归
+
+尾递归：在函数调用最后一步调用函数，进入下一个函数不再需要上一个函数的环境了，内存空间O(n) 到 O(1) 的优化，这就是尾递归。尾递归的优势：可以释放外层函数的调用站，较少栈层级，节省内存开销，避免内存溢出。
+
+### 观察者模式  和 发布-订阅模式的区别
+
+两者都是订阅-通知的模式，区别在于：
+
+观察者模式：观察者和订阅者是互相知道彼此的，是一个紧耦合的设计
+发布-订阅：观察者和订阅者是不知道彼此的，因为他们中间是通过一个订阅中心来交互的，订阅中心存储来多个订阅者，当有新的发布的时候，就会通知订阅者
+
+![](../images/001.png)
+
+### Websocket
+
+Websocket 是应用层协议，基于 TCP，与 HTTP 协议一样位于应用层，都是 TCP/IP 协议的子集
+
+HTTP 协议是单向通讯，只有客户端发起HTTP请求，服务端才会返回数据。而 WebSocket 协议是双向通信协议，在建立链接后，客户端和服务器都可以主动向 对方发送或接受数据
+
+
+### 参考资料
+
+- [面试总结：javascript 面试点汇总](https://juejin.im/post/5e523e726fb9a07c9a195a95#heading-4)

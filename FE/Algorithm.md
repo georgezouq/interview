@@ -84,3 +84,62 @@ for (k in dic){if (dic[k].length==1){delete(dic[k])}}
 console.log(dic)
 // { '9': [ '3', '6' ], '10': [ '10', '12' ] }
 ```
+
+### 斐波那契数列
+
+简单实现（极其容易内存溢出）
+
+```js
+function Fibonacci(n) {
+  if (n <= 1) { return n }
+  return Fibonacci(n-2) + Fibonacci(n-1)
+}
+```
+
+尾递归实现（简单，安全）
+
+```js
+function Fibonacci(n, ac1 = 1, ac2 = 1) {
+    if (n <= 1) { return ac2 }
+    return Fibonacci(n - 1, ac2, ac1 + ac2)
+}
+```
+
+循环实现
+
+```js
+function Fibonacci(n) {
+  let ac1 = 1, ac2 = 1
+
+  for (let i = 2; i < n; i++) {
+    [ac1, ac2] = [ac2, ac1 + ac2]
+  }
+
+  return ac2
+}
+```
+
+yield 实现
+
+```js
+function* FibonacciGenerator() {
+  let ac1 = 1, ac2 = 1
+  while(true) {
+    [ac1, ac2] = [ac2, ac1 + ac2]
+    yield ac2
+  }
+}
+
+function Fibonacci(n) {
+  if (n === 1 || n === 2) return 1
+
+  let res = 0
+  const generator = FibonacciGenerator()
+
+  for (let i = 2; i < n; i ++) {
+    res = generator.next()
+  }
+  return res.value
+}
+```
+

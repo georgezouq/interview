@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FE/hand-write/Adaptar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FE/hand-write/Curry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/prototype1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/prototype2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/company/蚂蚁金服.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/company/蚂蚁金服.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/hand-write/Promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Promise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/Algorithm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/JS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/JS.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FE/hand-write/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +27,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -65,7 +74,7 @@
       <workItem from="1582590646326" duration="108000" />
       <workItem from="1582590771848" duration="6792000" />
       <workItem from="1582776694751" duration="53000" />
-      <workItem from="1582776782741" duration="27398000" />
+      <workItem from="1582776782741" duration="41062000" />
     </task>
     <task id="LOCAL-00001" summary="Add FE interview question">
       <created>1581228148469</created>
@@ -151,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582818981085</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add new FE question for company and hand-write code">
+      <created>1582937601282</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582937601282</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +190,7 @@
     <MESSAGE value="Add FE interview question" />
     <MESSAGE value="Add new FE question" />
     <MESSAGE value="Add new FE question for company" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new FE question for company" />
+    <MESSAGE value="Add new FE question for company and hand-write code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new FE question for company and hand-write code" />
   </component>
 </project>

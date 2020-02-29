@@ -4,18 +4,19 @@
   </head>
   <body>
     <h1>This is a test html</h1>
-    <script src="./Promise.js"></script>
+    <script src="./Curry.js"></script>
+<!--    <script src="./Promise.js"></script>-->
     <script>
-      const arr = [
-        new MyPromise(resolve => setTimeout(() => resolve(1), 1000)),
-        new MyPromise(resolve => setTimeout(() => resolve(2), 1000)),
-        new MyPromise(resolve => setTimeout(() => resolve(3), 1000)),
-        new MyPromise(resolve => setTimeout(() => resolve(4), 1000)),
-      ]
-
-      MyPromise.all(arr).then(res => {
-        console.log('res:', res)
-      })
+      // const arr = [
+      //   new MyPromise(resolve => setTimeout(() => resolve(1), 1000)),
+      //   new MyPromise(resolve => setTimeout(() => resolve(2), 1000)),
+      //   new MyPromise(resolve => setTimeout(() => resolve(3), 1000)),
+      //   new MyPromise(resolve => setTimeout(() => resolve(4), 1000)),
+      // ]
+      //
+      // MyPromise.all(arr).then(res => {
+      //   console.log('res:', res)
+      // })
       // new MyPromise((resolve, reject) => {
       //   // throw new Error('AAA')
       //   setTimeout(() => resolve(1), 1000)
