@@ -143,3 +143,48 @@ function Fibonacci(n) {
 }
 ```
 
+
+        if (curX < n || curY < m) {
+            if (flag) {
+                if (curY === 0) {
+                    flag = false
+                    curX += 1
+                } else {
+                    curX += 1
+                    curY -= 1
+                }
+            } else {
+                if (curX === 0) {
+                    flag = true
+                    curY += 1
+                } else {
+                    curX -= 1
+                    curY += 1
+                }
+            }
+        } else {
+            if (flag) {
+                if ()
+            }
+        }
+
+### 动态规划
+
+动态规划可以看作是与递归相反的技术
+
+递归：从顶部开始将问题分解，通过解决掉所有分解出的小问题的方式，来解决整个问题
+动态规划：从底部开始解决问题，将所有的小问题解决掉，然后合并成一个解决方案，从而解决掉大问题
+
+
+var postorderTraversal = function(root) {
+    let res = []
+    if (!root) return res
+
+    let loop = function(tree) {
+        tree.left && loop(tree.left)
+        tree.right && loop(tree.right)
+        res.push(tree.val)
+    }
+    loop(root)
+    return res
+};

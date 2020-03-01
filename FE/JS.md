@@ -1,5 +1,7 @@
 # JS 面试题
 
+[toc]
+
 ### JS 原型链
 
 ![](../images/prototype1.png)

@@ -10,7 +10,7 @@
 - [HTML](./FE/HTML.md)
 - [CSS](./FE/CSS.md)
 - [算法](./FE/Algorithm.md)
-- [网络](./FE/Network.md)
+- [网络与浏览器](./FE/NetworkBrowser.md)
 - [Vue](./FE/Vue.md)
 - [React](./FE/React.md)
 - [高级前端](./FE/senior.md)

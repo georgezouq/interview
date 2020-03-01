@@ -57,7 +57,7 @@ POST GET DELETE PUT OPTIONS
 
 29. 解析HTML文档，构件DOM树，下载资源，构造CSSOM树，执行js脚本，这些操作没有严格的先后顺序，以下分别解释
 
-30. 构建DOM树：
+##### 构建DOM树：
 
 - Tokenizing：根据HTML规范将字符流解析为标记
 
@@ -67,7 +67,7 @@ POST GET DELETE PUT OPTIONS
 
 - 解析过程中遇到图片、样式表、js文件，启动下载
 
-31. 构建CSSOM树：
+##### 构建CSSOM树：
 
 - Tokenizing：字符流转换为标记流
 
@@ -83,7 +83,7 @@ POST GET DELETE PUT OPTIONS
 
 - 发布可视节点的内容和计算样式
 
-32. js解析如下：
+##### JS解析流程
 
 - 浏览器创建Document对象并解析HTML，将解析到的元素和文本节点添加到文档中，此时document.readystate为loading
 
@@ -99,7 +99,9 @@ POST GET DELETE PUT OPTIONS
 
 - 此时文档完全解析完成，浏览器可能还在等待如图片等内容加载，等这些内容完成载入并且所有异步脚本完成载入和执行，document.readState变为complete,window触发load事件
 
-33. 显示页面（HTML解析过程中会逐步显示页面）
+##### 显示页面
+
+HTML解析过程中会逐步显示页面
 
 ### 如何进行网站性能优化
 
@@ -191,6 +193,8 @@ POST GET DELETE PUT OPTIONS
 
 浏览器缓存分为 `强缓存` 和 `协商缓存`
 
+![flow](../images/flow.png)
+
 - 先根据这个资源给一些 http header 判断它是否被强缓存命中，如果被强缓存命中，则直接使用强缓存。
 - 如果没有被强缓存命中，客户端会发送请求到服务器，服务器通过另一些 request header 验证资源是否被协商缓存命中，称为 http再认证，如果命中，服务器会将请求返回（不返回资源），告诉客户端直接从缓存中获取。
 - Ctrl + F5 强制刷新，浏览器会忽略所有的强缓存 和 协商缓存
@@ -198,18 +202,64 @@ POST GET DELETE PUT OPTIONS
 
 ##### 强缓存
 
-- Expires 缓存过期时间 GMT格式的时间字符串
-- Cache-Control：max-age 强缓存利用max-age 值来判断缓存资源的最大生命周期（单位秒）。
-
+- Expires: 缓存过期时间 GMT格式的时间字符串
+- Cache-Control: 通过指令来实现缓存机制
+    - max-age: 强缓存的有效时间（单位秒）。
+    - no-cache: 不使用本地缓存，需要缓存与服务器协商，确认是否改变，如果之前的响应中存在 ETag，那么请求的时候会与服务器验证，如果资源未被更改，则可以避免重新下载
+    - no-store: 直接禁止浏览器缓存数据，每次用户请求资源，都会向服务器发送一个请求，每次都会下载完整的资源。
+    - public：可以被所有的用户缓存，包括终端用户和 CDN 代理服务器
+    - private：只能被终端用户的浏览器缓存，不允许CDN等中继缓存服务器对其缓存
+    
 ##### 协商缓存
 
-- Last-Modify （资源最后更新时间，随着服务器response返回）
-- If-Modified-Since （通过比较两个时间来判断资源在两次请求期间是否有过修改，如果没有修改，则命中协商缓存）
-- ETag （表示资源内容的唯一标识，随服务器response返回）
-- If-None-Match （服务器通过比较请求头部的 If-None-Match 与 当前资源的 ETag 是否一致来判断资源是否在两次请求之间有过修改，如果没有修改，则命中协商缓存）
+- Last-Modify：资源最后更新时间，随着服务器response返回
+- If-Modified-Since：通过比较两个时间来判断资源在两次请求期间是否有过修改，如果没有修改，则命中协商缓存
+- ETag：表示资源内容的唯一标识，随服务器response返回
+- If-None-Match：服务器通过比较请求头部的 If-None-Match 与 当前资源的 ETag 是否一致来判断资源是否在两次请求之间有过修改，如果没有修改，则命中协商缓存
 
-### 304 Not Modified
+##### 304 Not Modified
 
 304 Not Modified 说明无需再次传输请求内容，也就是说可以使用缓存内容。再是通常在一些安全方法 GET HEAD 或在请求 中附带了头部信息： If-None-Match 或 If-Modify-Since。
 
 如果 200 OK，响应会带有头部 Cache-Control，Content-Location，Date，ETag，Expires， Vary
+
+##### 浏览器缓存存放位置
+
+可看到有两个来源：
+
+- memory cache：内存中读取
+- disk cache：硬盘中读取
+
+内存当然要比硬盘读取快，为啥会有存放硬盘呢？
+
+### PWA
+
+PWA （Progressive web apps 渐进式Web应用），运用现代的Web API 以及传统的渐进式增强策略来创建跨平台 Web应用
+
+- App Shell
+- Service Work
+
+### 从URL输入到页面渲染的全过程
+
+- 用户输入URL地址并回车访问
+- 查看是否有缓存，并且是否新鲜 
+- 如果没有缓存则进行网络请求访问服务器
+- 获取并解析整体页面
+- 根据 HTML 生成 DOM树
+- 根据 style 标签及 CSS 文件，生成 CSSOM 树
+- 遍历DOM树的每一个节点，并从 CSSOM 树中寻找对应的样式 生成渲染树
+- 进行 Layout(回流) ：根据生成的渲染树进行回流，得到节点的集合信息
+- 进行 Painting(重绘): 根据渲染树及其回流得到的集合信息，得到节点的绝对像素
+- 绘制，在页面展示
+- 加载并解析JS脚本
+
+### 回流和重绘
+
+![](../images/layout&pointing.png)
+
+- 回流：页面采用流式布局，左到右，上到下，那么一个节点的空间属性若是发生了变化，那么会影响到其他节点的空间布局，需重新收集节点信息，在进行绘制，这就是回流的过程
+- 重绘：对元素外观做处理，比如颜色、背景、阴影等
+
+回流是一定会触发重绘的
+
+

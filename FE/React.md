@@ -1,5 +1,7 @@
 ## React
 
+[toc]
+
 ### React 中 keys 的作用是什么？
 
 Keys 是 React 用于追踪哪些列表中元素被修改、被添加或者被移除的辅助标识。
