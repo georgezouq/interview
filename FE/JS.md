@@ -302,10 +302,11 @@ console.log(n * 10) // 990
 
 当这两个函数同时存在时候，会先调用 valueOf ，若返回的不是原始类型，那么会调用 toString 方法，如果这时候 toString 方法返回的也不是原始数据类型，那么就会报错 TypeError: Cannot convert object to primitive value 如下
 
-### 箭头函数有没有 arguments 对象?
+### 箭头函数与普通函数的区别
 
-- 在 浏览器中是没有的
-- 在 node 中有 arguments 但是只能获取到长度
+- 箭头函数在浏览器中没有 `arguments` 对象，在 node 中有 `arguments` 但是只能获取到长度
+- `this` 指向不一样
+- 不能使用 `new` 关键字，即不能作为构造函数
 
 ### JS 处理二进制
 
@@ -430,6 +431,11 @@ const throttle = function (fn, wait) {
 ```
 
 ### Promise 
+
+##### promise是同步还是异步的？
+
+- promise本身是同步的
+- promise的回调then是异步的
 
 ##### 状态
 
@@ -828,3 +834,10 @@ HTTP 协议是单向通讯，只有客户端发起HTTP请求，服务端才会�
 ### 参考资料
 
 - [面试总结：javascript 面试点汇总](https://juejin.im/post/5e523e726fb9a07c9a195a95#heading-4)
+
+### JS 事件委托
+
+这里用父级ul做事件处理，当li被点击时，由于冒泡原理，事件就会冒泡到ul上，因为ul上有点击事件，所以事件就会触发，当然，这里当点击ul的时候，也是会触发的，那么问题就来了，如果我想让事件代理的效果跟直接给节点的事件效果一样怎么办，比如说只有点击li才会触发。
+
+Event对象提供了一个属性叫target，可以返回事件的目标节点，我们成为事件源，也就是说，target就可以表示为当前的事件操作的dom，但是不是真正操作dom，当然，这个是有兼容性的，标准浏览器用ev.target，IE浏览器用event.srcElement，此时只是获取了当前节点的位置，并不知道是什么节点名称，这里我们用nodeName来获取具体是什么标签名，这个返回的是一个大写的，我们需要转成小写再做比较（习惯问题）：
+

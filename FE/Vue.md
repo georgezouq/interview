@@ -1,5 +1,15 @@
 ## VUE
 
+### 对Vue 的理解
+
+- 不完全的MVVM
+- 双向数据绑定 Object.defineProperties + 发布订阅模式
+
+- 优点
+    - 低耦合
+    - 可重用性
+    - 可测试
+
 ### 什么是 MVVM
 
     MVVM Model-View-ViewModel 是一种设计思想，可以在Model 中定义数据修改和 操作的业务逻辑；View 代表 UI组件，他负责将数据模型转化成 UI 展现出来，ViewModel 是一个同步 View 和 Model 的对象。
@@ -106,6 +116,11 @@ console.log(Book.name);  // 《vue权威指南》
 - 解析器 Compile ：可以扫描和解析每个节点的相关指令，并根据初始化模版数据以及初始化相应的订阅器
 
 ##### 实现双向数据绑定
+
+- 在页面元素 `button` 中绑定 `{{count}}`
+- 在编译过程是，针对这个 `button` 会产生一个 `Watcher(vm, exp, cb(newValue,oldValue))`，vm 是 `Vue` 对象，`exp` 是数据绑定的数据；cb 的逻辑是用来更新页面
+- 实现发布订阅模式，Watcher初始化的时候会将 Dep.target 设置为this，也就是watcher自己，同时会触发 count 的 getter 方法，getter里面会调用 Dep 的 depend 方法，depend 方法会调用 Watcher 的 addDep 方法，addDep 方法就是将 Watcher 自己存放在 Dep 的事件池里面。
+
 
 ### Vue 核心原理
 

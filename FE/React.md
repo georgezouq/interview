@@ -1,6 +1,60 @@
 ## React
 
-[toc]
+- [React](#react)
+  * [React 中 keys 的作用是什么？](#react---keys--------)
+  * [调用 setState 之后发生了什么？](#---setstate---------)
+  * [react 生命周期函数](#react-------)
+  * [为什么虚拟 dom 会提高性能?](#------dom-------)
+  * [react diff 原理](#react-diff---)
+  * [React 中 refs 的作用是什么？](#react---refs--------)
+  * [展示组件(Presentational component)和容器组件(Container component)之间有何不同](#-----presentational-component-------container-component-------)
+  * [类组件(Class component)和函数式组件(Functional component)之间有何不同](#----class-component--------functional-component-------)
+  * [(组件的)状态(state)和属性(props)之间有何不同](#--------state-----props-------)
+  * [何为受控组件(controlled component)](#-------controlled-component-)
+  * [何为高阶组件(higher order component)](#-------higher-order-component-)
+  * [为什么建议传递给 setState 的参数是一个 callback 而不是一个对象](#---------setstate--------callback--------)
+  * [除了在构造函数中绑定 this，还有其它方式吗](#-----------this--------)
+  * [(在构造函数中)调用 super(props) 的目的是什么](#-----------super-props--------)
+  * [应该在 React 组件的何处发起 Ajax 请求](#----react---------ajax---)
+  * [描述事件在 React 中的处理方式。](#------react--------)
+  * [createElement 和 cloneElement 有什么区别？](#createelement---cloneelement-------)
+  * [React.cloneElement()与 React.createElement()相似，不同的是它传入的第一个参数是一个 React 元素，而不是标签名或组件。新添加的属性会并入原有的属性，传入到返回的新元素中，而就的子元素奖杯替换。](#reactcloneelement----reactcreateelement----------------------react---------------------------------------------------)
+  * [React 中有三种构建组件的方式](#react------------)
+  * [react 组件的划分业务组件技术组件？](#react---------------)
+  * [简述 flux 思想](#---flux---)
+  * [React 项目用过什么脚手架（本题是开放性题目）](#react--------------------)
+  * [了解 redux 么，说一下 redux 吧](#---redux-------redux--)
+  * [redux 有什么缺点](#redux------)
+  * [在生命周期中的哪一步你应该发起 Ajax 请求](#----------------ajax---)
+  * [React v16 新特性](#react-v16----)
+      - [fragments 返回片段类型](#fragments-------)
+      - [error boundaries (处理错误 )](#error-boundaries--------)
+      - [portals 挂载方式](#portals-----)
+      - [Customer DOM Attribute (支持自定义 DOM 属性)](#customer-dom-attribute--------dom----)
+      - [Improved Server-side Rendering (提升服务端渲染性能)](#improved-server-side-rendering------------)
+      - [Reduced File Size (减少文件大小)](#reduced-file-size---------)
+      - [新的生命周期方法](#--------)
+      - [新的 Context API](#---context-api)
+  * [React 受控组件与非受控组件](#react-----------)
+      - [受控组件](#----)
+      - [非受控组件](#-----)
+
+### 对 React 的理解
+
+React 构建用户界面的JavaScript库
+
+- 专注于 View 层
+- 以虚拟DOM 的方式提高渲染性能
+- 内部的 state immutable
+- 更方便灵活的方式实现组件化
+
+##### props state 和 render 函数的关系，数据和页面互相联动的底层机制
+
+当组件的 state 或者 props 发生改变，自己的render 函数就会重新执行
+
+##### React 中的虚拟 DOM
+
+
 
 ### React 中 keys 的作用是什么？
 
@@ -22,12 +76,9 @@ render () {
 
 ### 调用 setState 之后发生了什么？
 
-
 在代码中调用 setState 函数之后，React 会将传入的参数对象与组件当前的状态合并，然后触发所谓的调和过程（Reconciliation）。经过调和过程，React 会以相对高效的方式根据新的状态构建 React 元素树并且着手重新渲染整个 UI 界面。在 React 得到元素树之后，React 会自动计算出新的树与老树的节点差异，然后根据差异对界面进行最小化重渲染。在差异计算算法中，React 能够相对精确地知道哪些位置发生了改变以及应该如何改变，这就保证了按需更新，而不是全部重新渲染。
 
-
 ### react 生命周期函数
-
 
 初始化阶段：
 - getDefaultProps:获取实例的默认属性
@@ -410,3 +461,105 @@ class NameForm extends React.Component {
   }
 }
 ```
+
+### React Hook
+
+Hook 是一些可以让你在函数组件里"钩入"React state 及生命周期等特性的函数。Hook 不能在class组件中使用，这使得你不使用 class 也能使用 React
+
+```jsx harmony
+import React, { useState } from 'react';
+
+function Example() {
+  // 声明一个新的叫做 “count” 的 state 变量
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+useState: 一个Hook，通过在函数组件里调用来给组件添加一些内部 的 state，react 在重复渲染的时候会保留这个 state。
+count: state 的当前值
+
+##### useEffect
+
+当你调用 useEffect 时，就是在告诉 React 在完成对 DOM 的更改后运行你的“副作用”函数。由于副作用函数是在组件内声明的，所以它们可以访问到组件的 props 和 state。默认情况下，React 会在每次渲染后调用副作用函数 —— 包括第一次渲染的时候。（我们会在使用 Effect Hook 中跟 class 组件的生命周期方法做更详细的对比。）
+
+副作用函数还可以通过返回一个函数来指定如何“清除”副作用。例如，在下面的组件中使用副作用函数来订阅好友的在线状态，并通过取消订阅来进行清除操作：
+
+##### Hook 规则
+
+- 只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。
+- 只能在 React 的函数组件中调用 Hook。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hook —— 就是自定义的 Hook 中，我们稍后会学习到。）
+
+### React 性能优化
+
+##### 使用 Production 版本
+##### 避免更新 DOM
+
+使用 shouldComponentUpdate 避免进行昂贵的更新DOM子树的操作。
+
+##### shouldComponentUpdate
+
+![](../images/shouldComponentUpdate.png)
+
+这里有一个组件的子树，每一个 都指明了shouldComponentUpdate 返回值和 虚拟DOM 是否相等，最后圆圈红色的需要重新渲染
+
+决定组件是否更新有两个标准，一个 shouldComponentUpdate 和 VDOM 是否相等。如果 shouldComponentUpdate 返回为 true 并且 react经过重新虚拟DOM计算，跟之前的虚拟dom树一致，则没必要更新真实的DOM。
+
+##### ImmutableJS
+
+ImmutableJS 每次改变都会返回一个新对象，仅仅需要对象引用是否改变
+
+```js
+var SomeRecord = Immutable.Record({ foo: null });
+var x = new SomeRecord({ foo: 'bar'  });
+var y = x.set('foo', 'baz');
+x === y; // false
+```
+
+### React 创建组件的几种方法和他们的区别
+
+##### CreateClass
+```js
+var Greeting = React.createClass({
+  propTypes, getDefaultProps, getInitialState, render
+})
+```
+
+在createClass中，React对属性中的所有函数都进行了this绑定
+
+##### Component
+
+```js 
+class Greeting extends React.Component {}
+```
+
+
+
+##### PureComponent
+
+但是 `PureComponent` 通过 `prop` `nextProp` 和 `state` `nextState` 的浅比较来实现 `shouldComponentUpdate`，某些情况下可以用 `PureComponent` 提升性能
+
+##### Stateless Functional component
+
+###### 16.8 版本之前
+
+- Component 包含内部state，而Stateless Functional Component所有数据都来自props，没有内部state;
+- Component 包含的一些生命周期函数，Stateless Functional Component都没有，因为Stateless Functional component没有shouldComponentUpdate,所以也无法控制组件的渲染，也即是说只要是收到新的props，Stateless Functional Component就会重新渲染
+- Stateless Functional Component 不支持Refs
+
+###### 16.8 版本添加 Hook 之后
+
+在 react官方文档中有一段关于添加Hooks后的介绍 
+
+    "You might have previously known these as “stateless components”. We’re now introducing the ability to use React state from these, so we prefer the name “function components”.Hooks don’t work inside classes. But you can use them instead of writing classes."
+    
+- 通过 `useState` Function Component 可以拥有 state
+- 通过 `useEffect`  Function Component 可以有一些初始的生命周
