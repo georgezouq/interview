@@ -281,3 +281,22 @@ padding 百分比相对于父元素宽度计算
 .content { position: absolute; width: 100%; height: 100%; }
 </style>
 ```
+
+### 怎么理解Flex 布局，flex 布局与普通布局有什么区别，什么情况下我们用flex 什么情况下用普通布局
+
+- 传统布局以基于盒子模型，依赖 display、position、float 等属性。对于那些特殊布局非常不方便，比如垂直居中
+- Flex 是 FlexBox 的缩写，意为弹性布局，用来为 盒子模型提供最大的灵活性。任意一个容器都可以被指定为 flex 布局。
+    - just-content 定义了项目在主轴上的对其方式 
+        - flex-end 右对齐；
+        - center 居中；
+        - space-between 两端对其；
+        - space-around 两个项目中间间隔相等
+    - align-items 定义项目如何在交叉轴 纵轴对齐
+        - baseline 项目第一行文字基线对齐
+        - stretch 如果项目未设置高度 或者为 auto，将占满整个容器的高度
+    - flex-direction 决定主轴的对齐方向
+    - flex-wrap 
+        - nowrap 不换行
+        - wrap 换行
+        - wrap-reverse 换行，第一行在下方
+    

@@ -1,5 +1,27 @@
 # 高级前端工程师面试题
 
+### Redux 和 Vuex 的深度区别
+
+- Redux 三大原则：
+    - 单一数据源（一个 Redux 应用只有一个 store），也是单向数据流 
+    - state 只读
+    - 使用纯函数（Reducer）来修改 state
+- Vuex 三大原则：
+    - 应用层级的状态应该集中到单个 store 对象中
+    - 提交 mutation 是改变状态的唯一方法，并且这个过程是同步的
+    - 异步逻辑都应该封装到 action 中
+
+##### 异步操作
+
+- Redux 得益于中间件机制，利用 redux-thunk，可以将异步逻辑放到 action creator 中，然后通过 action creator 做一个控制反转，给 action creator 传入 dispatch 作为参数，于是就可以 dispatch action   
+- Vuex 是用 mutation 来对应 Redux 的 action，另外 Vuex 创造来一个 action 来提交 mutation，并通过异步提交 mutation 来实现异步操作结果能到达 state
+
+参考：[Redux 和 Vuex 的对比](https://juejin.im/post/5d6a6997e51d4561a54b69f6)
+
+### Redux-Thunk
+
+redux-thunk 可以 dispatch 函数，这个函数用于生成 action，所以在这个函数李 我们可以进行异步 操作，等异步的结果出来后在放到 action 里面将这个 action 用 dispatch 出去。
+原本通过 dispatch 来分发 action，现在是异步 action 即 action creator 掌握了控制权调用 dispatch，所以叫做控制反转。
 
 ### bind 函数实现
 
