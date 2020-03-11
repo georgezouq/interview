@@ -30,6 +30,8 @@
 
 ### 其他资源
 
+- [面试官系列](https://juejin.im/post/5bf8dab3f265da61590b55d4)
+- [面试必备的13道可以举一反三的Vue面试题](https://juejin.im/post/5d41eec26fb9a06ae439d29f)
 - [挑战一轮大厂后的面试总结 (含六个方向) - javascript 篇(万字长文)](https://juejin.im/post/5e523e726fb9a07c9a195a95)
 - [2020 前端面试 | 第一波面试题总结](https://juejin.im/post/5e3d898cf265da5732551a56)
 - [经典大厂前端面试题（含解析）基础篇(一)](https://juejin.im/post/5df98b825188251277365bc1)

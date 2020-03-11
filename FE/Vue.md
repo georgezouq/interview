@@ -124,6 +124,97 @@ console.log(Book.name);  // 《vue权威指南》
 
 ### Vue 核心原理
 
-- DocumentFragment
+- 响应式： 数据变化监听和双向数据绑定
+- 模版引擎：如何解析模版
+- 渲染： Vue 如何将监听到的数据变化和解析后的 HTML 进行渲染
 
-Web API，大批量 DOM 节点的代名词
+### 双向绑定 Proxy 比 definedProperty
+
+##### 实现双向绑定的方法：
+
+- KnockoutJS 观察者模式的双向绑定
+- Ember 基于数据模型的双向绑定
+- Angular 基于脏检查的双向绑定
+- Vue defineProperties 和 Proxy
+
+##### 数据劫持实现双向数据绑定
+
+```jsx harmony
+// 遍历对象,对其属性值进行劫持
+Object.keys(data).forEach(function(key) {
+  Object.defineProperty(data, key, {
+    enumerable: true,
+    configurable: true,
+    get: function() {
+      console.log('get');
+    },
+    set: function(newVal) {
+      // 当属性值发生变化时我们可以进行额外操作
+      console.log(`大家好,我系${newVal}`);
+      say(newVal);
+    },
+  });
+});
+```
+
+优势
+
+1. 无需显示调用
+2. 可精确得知变化数据
+
+##### 实现思路
+
+1、 利用 Proxy 和 Object.defineProperty 生成的 Observer 针对对象/对象属性进行劫持，在属性发生变化后通知订阅者
+2、 解析器 Compile 解析模版中的 Directive 指令，收集指令所依赖的方法和数据，等待数据变化然后进行渲染
+3、 Watcher 属于 Observer 和 Compile 的桥梁，他将接收到的 Observer 产生的数据变化，并根据 Compile 提供的指令进行视图渲染，使得数据变化促使视图变化
+
+##### definedProperty 的缺陷
+
+- Object.definedProperty 无法实现对数据元素修改的监听，Vue 之前的版本是重写了 数组的 push、pop、shift、unshift、splice、sort、reverse 方法，但是 `vm.items[index] = newValue` 这种是无法监测的。Proxy 可以
+- Object definedProperty 只能劫持对象的属性，那么我们需要对每个对象的每个属性进行遍历，如果属性值也是对象则需要深度遍历
+
+##### Proxy 的 特点
+
+Proxy 在ES6 中被提出，他在目标对象之间架设了一层`拦截`，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写
+
+- Proxy 可以直接监听对象而非属性
+
+```jsx harmony
+const input = document.getElementById('input');
+const p = document.getElementById('p');
+const obj = {};
+
+const newObj = new Proxy(obj, {
+  get: function(target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function(target, key, value, receiver) {
+    console.log(target, key, value, receiver);
+    if (key === 'text') {
+      input.value = value;
+      p.innerHTML = value;
+    }
+    return Reflect.set(target, key, value, receiver);
+  },
+});
+
+input.addEventListener('keyup', function(e) {
+  newObj.text = e.target.value;
+});
+```
+
+- Proxy 可以直接监听数组的变化
+
+```jsx harmony
+let obj = { a: 1, b: 2, c: [1,2,3, {d:1, t:2}] }
+
+let newProxy = new Proxy(obj, { 
+  get: (target, key, receiver) => {
+    console.log('get'); 
+    return Reflect.get(target, key, receiver) 
+  }, 
+  set: (target, key, value, receiver) => { 
+    console.log(target, key, value, receiver); return Reflect.set(target, key, value, receiver); } 
+})
+```

@@ -841,3 +841,61 @@ HTTP 协议是单向通讯，只有客户端发起HTTP请求，服务端才会�
 
 Event对象提供了一个属性叫target，可以返回事件的目标节点，我们成为事件源，也就是说，target就可以表示为当前的事件操作的dom，但是不是真正操作dom，当然，这个是有兼容性的，标准浏览器用ev.target，IE浏览器用event.srcElement，此时只是获取了当前节点的位置，并不知道是什么节点名称，这里我们用nodeName来获取具体是什么标签名，这个返回的是一个大写的，我们需要转成小写再做比较（习惯问题）：
 
+### 实现 JS 深克隆
+
+##### 浅克隆
+
+对象只会被克隆最外部的一层，至于更深层的对象，则依然是通过引用指向同一块堆内存
+
+```jsx harmony
+function copy(obj) {
+  return { ...obj }
+}
+
+function copy2(obj) {
+  const res = {}
+  for(let key in obj) {
+    res[key] = obj[key]
+  }
+  return res
+}
+```
+
+##### 深克隆
+
+1. JSON.parse
+
+```jsx harmony
+let newObj = JSON.parse(JSON.stringify(obj))
+```
+
+问题:
+
+- 无法实现对函数，RegExg 等特殊对象的克隆
+- 会抛弃对象的 constructor，所有的构造函数会指向 Object
+- 对象循环引用，会报错
+
+2. 构造一个深克隆函数
+
+```jsx harmony
+function deepCopy(obj) {
+
+}
+
+function _deepCopy(obj) {
+  let set = new Set()
+  let res = {}
+  for (let key in obj) {
+    if (!obj.hasOwnProperty(key)) return
+    const item = obj[key]
+    if(set.has(item)) continue
+    set.add(item)
+    if (typeof item === 'object') {
+      res[key] = deepCopy(item)
+      continue
+    }   
+    res[key] = item
+  }
+  return res
+}
+```
