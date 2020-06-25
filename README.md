@@ -18,6 +18,7 @@
 ### 公司
 
 - [字节跳动](./FE/company/字节跳动.md)
+- [美团点评](./FE/company/美团点评.md)
 - [百度](./FE/company/百度.md)
 - [钉钉](./FE/company/钉钉.md)
 - [小米](./FE/company/小米.md)
@@ -26,7 +27,6 @@
 - [腾讯](./FE/company/腾讯.md)
 - [雪球](./FE/company/雪球.md)
 - [跟谁学](./FE/company/跟谁学.md)
-- [黄油相机](./FE/company/黄油相机.md)
 
 ### 其他资源
 

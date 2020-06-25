@@ -300,3 +300,31 @@ padding 百分比相对于父元素宽度计算
         - wrap 换行
         - wrap-reverse 换行，第一行在下方
     
+### FlexBox 和 CSS Grid
+
+[flexbox-vs-css-grid](https://blog.logrocket.com/flexbox-vs-css-grid/)
+
+- FlexBox: 一维布局系统，支持创建 行/列 轴布局。
+
+创建 Flexbox 布局需要首先创建 flex 容器`display:flex;`。每一个在flex容器中的元素都是 flex元素
+
+- CSS Grid：二维布局系统，可以同时处理 行/列。
+
+创建 grid 容器首先创建 grid 容器`display:grid;`
+使用 `grid-template-rows` 创建行元素
+
+```css
+grid-template-rows: 200px 200px;
+```
+
+使用 `grid-template-columns` 创建行元素
+
+```css
+grid-template-columns: 200px 200px;
+```
+
+###### 不同
+
+- CSS Grid: Layout
+- FlexBox: Alignment
+
