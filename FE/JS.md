@@ -104,10 +104,34 @@ function ObjectFactory () {
 }
 ```
 
-### typeof 和 instanceof 的区别
+### typeof、instanceof、toString 的区别
 
-- typeof 用于比较基础数据类型和引用类型，返回值有 "number"、"string"、"boolean"、"null"、"function" 和 "undefined"、"symble"、"object"
-- instanceof 对原型链中的 `__proto__` 逐层向上进行查找，通过instanceof 可以判断一个事例的父类型 和祖先类型的实例
+三种都是JS中用于获取数据类型的方法
+
+##### typeof 
+用于比较基础数据类型和引用类型，返回值有 "number"、"string"、"boolean"、"null"、"function"、"undefined"、"symble"、"object"
+原子类型字符串、数值、布尔值的typeof运算返回相应的类型值；而合成类型中只有函数的typeof运算返回‘function’，其他都返回‘object’。两个特殊值里， typeof undefined 为 ‘undefined’，而typeof null 为 ‘object’。
+
+##### instanceof 
+
+用来判断一个对象是否为某个构造函数的实例。值得注意的是原子类型的值不是对象，所以不能用instanceof。对原型链中的 `__proto__` 逐层向上进行查找，通过instanceof 可以判断一个事例的父类型 和祖先类型的实例
+
+##### toString
+
+要想区别对象、数组、函数单纯使用 typeof 是不行的。null 和Array 的结果也是 object，有时候我们需要的是 "纯粹" 的 object 对象。
+
+```js
+Object.prototype.toString.call(2); // "[object Number]"
+Object.prototype.toString.call(''); // "[object String]"
+Object.prototype.toString.call(true); // "[object Boolean]"
+Object.prototype.toString.call(undefined); // "[object Undefined]"
+Object.prototype.toString.call(null); // "[object Null]"
+Object.prototype.toString.call(Math); // "[object Math]"
+Object.prototype.toString.call({}); // "[object Object]"
+Object.prototype.toString.call([]); // "[object Array]"
+```
+
+[拓展阅读](https://juejin.im/post/5c0224c1f265da611d666514)
 
 ### 数据类型
 
