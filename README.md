@@ -13,7 +13,7 @@
 - [网络与浏览器](./FE/NetworkBrowser.md)
 - [Vue](./FE/Vue.md)
 - [React](./FE/React.md)
-- [高级前端](./FE/senior.md)
+- [深度](./FE/Senior.md)
 
 ### 公司
 

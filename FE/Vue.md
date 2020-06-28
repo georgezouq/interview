@@ -134,12 +134,6 @@ console.log(Book.name);  // 《vue权威指南》
 - 在编译过程是，针对这个 `button` 会产生一个 `Watcher(vm, exp, cb(newValue,oldValue))`，vm 是 `Vue` 对象，`exp` 是数据绑定的数据；cb 的逻辑是用来更新页面
 - 实现发布订阅模式，Watcher初始化的时候会将 Dep.target 设置为this，也就是watcher自己，同时会触发 count 的 getter 方法，getter里面会调用 Dep 的 depend 方法，depend 方法会调用 Watcher 的 addDep 方法，addDep 方法就是将 Watcher 自己存放在 Dep 的事件池里面。
 
-### Vue 核心原理
-
-- 响应式： 数据变化监听和双向数据绑定
-- 模版引擎：如何解析模版
-- 渲染： Vue 如何将监听到的数据变化和解析后的 HTML 进行渲染
-
 ### 双向绑定 Proxy 比 definedProperty
 
 ##### 实现双向绑定的方法：
@@ -147,7 +141,7 @@ console.log(Book.name);  // 《vue权威指南》
 - KnockoutJS 观察者模式的双向绑定
 - Ember 基于数据模型的双向绑定
 - Angular 基于脏检查的双向绑定
-- Vue defineProperties 和 Proxy
+- Vue `Object.defineProperties` 和 `Proxy`
 
 ##### 数据劫持实现双向数据绑定
 
@@ -176,14 +170,14 @@ Object.keys(data).forEach(function(key) {
 
 ##### 实现思路
 
-1、 利用 Proxy 和 Object.defineProperty 生成的 Observer 针对对象/对象属性进行劫持，在属性发生变化后通知订阅者
-2、 解析器 Compile 解析模版中的 Directive 指令，收集指令所依赖的方法和数据，等待数据变化然后进行渲染
-3、 Watcher 属于 Observer 和 Compile 的桥梁，他将接收到的 Observer 产生的数据变化，并根据 Compile 提供的指令进行视图渲染，使得数据变化促使视图变化
+1、 利用 `Proxy` 和 `Object.defineProperty` 生成的 Observer 针对对象/对象属性进行劫持，在属性发生变化后通知订阅者
+2、 解析器 `Compile` 解析模版中的 `Directive` 指令，收集指令所依赖的方法和数据，等待数据变化然后进行渲染
+3、 `Watcher` 属于 `Observer` 和 `Compile` 的桥梁，他将接收到的 Observer 产生的数据变化，并根据 Compile 提供的指令进行视图渲染，使得数据变化促使视图变化
 
 ##### definedProperty 的缺陷
 
-- Object.definedProperty 无法实现对数据元素修改的监听，Vue 之前的版本是重写了 数组的 push、pop、shift、unshift、splice、sort、reverse 方法，但是 `vm.items[index] = newValue` 这种是无法监测的。Proxy 可以
-- Object definedProperty 只能劫持对象的属性，那么我们需要对每个对象的每个属性进行遍历，如果属性值也是对象则需要深度遍历
+- 无法实现对数组修改的监听，Vue2 重写了 数组的 push、pop、shift、unshift、splice、sort、reverse 方法，但是 `vm.items[index] = newValue` 这种赋值的修改是无法监测的。Proxy 可以
+- 只能劫持对象的单个属性，那么我们需要对对象的每个属性进行遍历，如果属性值也是对象则需要深度遍历。
 
 ##### Proxy 的 特点
 

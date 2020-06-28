@@ -1,4 +1,18 @@
-# 高级前端工程师面试题
+# 高级/资深前端面试题
+
+### 前端组件库设计原则
+
+- 颗粒度考量：单一职能可以是的组件可以复用，但是太过于追求单一职能又会导致组件库过于零碎，上手成本高，我们可以考虑适当的单一职能+组件分层解决这个问题。
+- 通用性考量：一般将组件分为 UI组件和业务组件，其中业务组件如果只是在一个项目中可能用到的特殊业务就不适合放到组件库中。
+- 技术选型：选择团队熟悉并且在当前项目组应用的技术栈
+    - CSS框架：Less、Sass 和 StyledComponent
+    - JS框架：Typescript 方便实现 ClassComponent 并且对数据结构可控
+    - 打包工具：Webpack
+    - 代码检测：TSLint Airbnb
+    - Commit 规范：Angular 团队规范
+    - 测试框架：Jest
+    - 持续继承：Gitlab CI
+    - 快速启动脚手架：create-vue-app
 
 ### Redux 和 Vuex 的深度区别
 
@@ -13,8 +27,8 @@
 
 ##### 异步操作
 
-- Redux 得益于中间件机制，利用 redux-thunk，可以将异步逻辑放到 action creator 中，然后通过 action creator 做一个控制反转，给 action creator 传入 dispatch 作为参数，于是就可以 dispatch action   
-- Vuex 是用 mutation 来对应 Redux 的 action，另外 Vuex 创造来一个 action 来提交 mutation，并通过异步提交 mutation 来实现异步操作结果能到达 state
+- Redux 得益于中间件机制，利用 redux-thunk，可以将异步逻辑放到 `action creator` 中，通过 `action creator` 做一个控制反转，给 `action creator` 传入 `dispatch` 作为参数，就可以 `dispatch action` 了。 
+- Vuex 是用 `mutation` 来对应 `Redux` 的 `action`，另外 `Vuex` 创造来一个 `action` 方法来提交 `mutation`，在 action方法中执行异步操作，获取结果后通过提交 `mutation` 来实现 `state` 的修改。
 
 参考：[Redux 和 Vuex 的对比](https://juejin.im/post/5d6a6997e51d4561a54b69f6)
 
@@ -22,93 +36,6 @@
 
 redux-thunk 可以 dispatch 函数，这个函数用于生成 action，所以在这个函数李 我们可以进行异步 操作，等异步的结果出来后在放到 action 里面将这个 action 用 dispatch 出去。
 原本通过 dispatch 来分发 action，现在是异步 action 即 action creator 掌握了控制权调用 dispatch，所以叫做控制反转。
-
-### bind 函数实现
-
-```js
-Function.prototype.bind = function(oThis) {
-  if (typeof this !== 'function') {
-    throw new TypeError(`${this} is not callable`)
-  }
-
-  const arg = Array.prototype.slice(arguments, 1)
-  const self = this
-  const func = function() {}
-
-  const bindFunc =  function () {
-    // instanceof 为了防止 new 的时候报错
-    return this.apply(this instanceof func ? self : oThis, arg.concat(arguments))
-  }
-
-  func.prototype = self.prototype
-  bindFunc.prototype = new func()
-
-  return bindFunc
-}
-```
-
-### Call 函数实现
- 
-```js
-Function.prototype.call2 = function (context) {
-    var context = context || window;
-    context.fn = this;
-
-    var args = [];
-    for(var i = 1, len = arguments.length; i < len; i++) {
-        args.push('arguments[' + i + ']');
-    }
-
-    var result = eval('context.fn(' + args +')');
-
-    delete context.fn
-    return result;
-}
-
-// 测试一下
-var value = 2;
-
-var obj = {
-    value: 1
-}
-
-function bar(name, age) {
-    console.log(this.value);
-    return {
-        value: this.value,
-        name: name,
-        age: age
-    }
-}
-
-bar.call2(null); // 2
-
-console.log(bar.call2(obj, 'kevin', 18));
-```
-
-### apply的模拟实现
-
-```js
-Function.prototype.apply = function (context, arr) {
-    var context = Object(context) || window;
-    context.fn = this;
-
-    var result;
-    if (!arr) {
-        result = context.fn();
-    }
-    else {
-        var args = [];
-        for (var i = 0, len = arr.length; i < len; i++) {
-            args.push('arr[' + i + ']');
-        }
-        result = eval('context.fn(' + args + ')')
-    }
-
-    delete context.fn
-    return result;
-}
-```
 
 ### 微任务、宏任务与Event-Loop
 

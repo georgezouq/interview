@@ -923,3 +923,121 @@ function _deepCopy(obj) {
   return res
 }
 ```
+
+
+### 调用并改变函数执行上下文的三种方式
+
+- bind: 事先把 函数上下文 改变成我们要想要的结果，并且把对应的参数值准备好，以后要用到了，直接的执行即可。也就是说bind可以改变this的指向，但不会马上的执行
+- call: 改变函数上下文后立即执行，与apply 的区别的是call从第二个参数开始以参数列表的形式展现 `fn.call(this, 1, 2, 3)`
+- apply: 改变上下文后立即执行，与call的区别在于apply从第二个参数开始 `fn.apply(this, [1, 2, 3])`
+
+#### bind 函数实现
+
+```js
+Function.prototype.bind = function(oThis) {
+  if (typeof this !== 'function') {
+    throw new TypeError(`${this} is not callable`)
+  }
+
+  const arg = Array.prototype.slice(arguments, 1)
+  const self = this
+  const func = function() {}
+
+  const bindFunc =  function () {
+    // instanceof 为了防止 new 的时候报错
+    return this.apply(this instanceof func ? self : oThis, arg.concat(arguments))
+  }
+
+  func.prototype = self.prototype
+  bindFunc.prototype = new func()
+
+  return bindFunc
+}
+```
+
+#### Call 函数实现
+ 
+```js
+Function.prototype.call2 = function (context) {
+    var context = context || window;
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i < len; i++) {
+        args.push('arguments[' + i + ']');
+    }
+
+    var result = eval('context.fn(' + args +')');
+
+    delete context.fn
+    return result;
+}
+
+// 测试一下
+var value = 2;
+
+var obj = {
+    value: 1
+}
+
+function bar(name, age) {
+    console.log(this.value);
+    return {
+        value: this.value,
+        name: name,
+        age: age
+    }
+}
+
+bar.call2(null); // 2
+
+console.log(bar.call2(obj, 'kevin', 18));
+```
+
+#### apply的模拟实现
+
+```js
+Function.prototype.apply = function (context, arr) {
+    var context = Object(context) || window;
+    context.fn = this;
+
+    var result;
+    if (!arr) {
+        result = context.fn();
+    }
+    else {
+        var args = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            args.push('arr[' + i + ']');
+        }
+        result = eval('context.fn(' + args + ')')
+    }
+
+    delete context.fn
+    return result;
+}
+```
+
+### 前端路由实现方式
+
+#### Hash路由
+
+Hash路由通过在地址中增加 `#path` 实现区分页面。当hash发生变化后改变对应组件
+
+- `window.addEventListener('hashchange', this.refresh, false);`  监听路由变化
+- location.hash.slice(1) 获取当前路由地址
+- 创建 history 数组保存历史记录保证前进后退
+
+#### HTML5 HistoryAPI
+
+通过 HTML5新API `window.history` 的
+
+- window.history.back();       // 后退
+- window.history.forward();    // 前进
+- window.history.go(-3);       // 后退三个页面
+- pushState 用于在浏览历史中添加历史记录,但是并不触发跳转,此方法接受三个参数
+    state:一个与指定网址相关的状态对象，popstate事件触发时，该对象会传入回调函数。如果不需要这个对象，此处可以填null。
+    title：新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null。
+    url：新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址。
+- replaceState 
+

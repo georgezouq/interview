@@ -515,7 +515,10 @@ count: state 的当前值
 
 ##### ImmutableJS
 
-ImmutableJS 每次改变都会返回一个新对象，仅仅需要对象引用是否改变
+immutable.js是正是兼顾了使用效果和性能的解决方案
+
+Immutable实现的原理是Persistent Data Structur（持久化数据结构），对Immutable对象的任何修改或添加删除操作都会返回一个新的Immutable对象, 同时使用旧数据创建新数据时，要保证旧数据同时可用且不变。
+为了避免像 deepCopy一样 把所有节点都复制一遍带来的性能损耗，Immutable 使用了 Structural Sharing（结构共享），即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享。
 
 ```js
 var SomeRecord = Immutable.Record({ foo: null });
