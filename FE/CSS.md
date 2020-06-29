@@ -300,6 +300,15 @@ padding 百分比相对于父元素宽度计算
         - wrap 换行
         - wrap-reverse 换行，第一行在下方
     
+### CSS布局方式都有那些
+
+- 传统布局
+    - 文档流布局 display 属性
+    - 定位布局 position属性
+    - 浮动布局 float属性 
+- flex 布局
+- grid 布局
+
 ### FlexBox 和 CSS Grid
 
 [flexbox-vs-css-grid](https://blog.logrocket.com/flexbox-vs-css-grid/)
