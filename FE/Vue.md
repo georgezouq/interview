@@ -224,3 +224,46 @@ let newProxy = new Proxy(obj, {
     console.log(target, key, value, receiver); return Reflect.set(target, key, value, receiver); } 
 })
 ```
+
+### computed 和 watch 有什么区别
+
+一个是用于计算一些数据，计算完成后当成一个属性使用，后续其依赖的值改变了之后，才会被修改。而watch则是用于监听数据的改变并做一个任务。
+
+##### computed 
+
+- 计算属性，更多用于计算值的厂家
+- 具备缓存性，computed的值是在getter执行后会缓存的，只有它依赖的属性值发生改变后，下次获取computed 的值时才会重新调用对应的getter计算
+- 适用于计算比较消耗性能的计算场景
+
+##### watch
+
+- 更多的是观察的作用，类似数据监听毁掉，用于观察 props $emit 或者本组件的值
+- 无缓存行，页面重新渲染时也不会执行
+
+### 如何理解VUE的响应式系统
+
+- 任何一个Vue组件都会有一个与之对应的 Watcher 实例
+- Vue 的 data 上的 属性会被添加 getter 和 setter
+- Vue 组件 render 函数执行时，data 上的属性会被 touch，getter方法会被调用，此时 Vue 会去记录此 Vue component 所依赖的所有的data（这个过程成为依赖收集）。
+- data 被改动时，setter 方法会被调用，此时 Vue 会去同志所有依赖于此 data 的组件调用他们的 render 函数进行更新。
+
+### Vue 可以通过数据劫持精准探测数据变化，为什么还需要对 DOM 进行 diff 检测差异
+
+现代前端框架有两种侦测方法：pull 和 push
+
+pull代表为 React。在 React 中常调用 setState API 显示更新。然后 React 会进行一层层的 VDOM Diff 操作找出差异。然后 Patch 到 DOM 上，React 一开始不知道哪里发生变化了，只知道有变化了，然后再比较暴力的 Diff 查找哪里发生变化。
+
+push方式的代表则是 Vue 的响应式系统。当初始化时就会对数据进行依赖收集，一旦数据变化，响应式系统就会立即得知，因此 Vue 是一开始就知道 在哪发生变化的。但是 Vue 绑定一个数据就需要一个 Watcher，一旦我们的绑定颗粒度太高就会产生大量 Watcher，这会带来内存及依赖追踪的开销，而颗粒度过低会无法精准侦测变化，因此 Vue 的设计是选择中等颗粒度的方案。在组件级别进行 push 侦测，然后在组件内部进行 VDOM Diff 获取更加具体的差异。而 VDOM 是 pull 操作，Vue 是 push + pull 结合的方式进行变化侦测的。
+
+### Vue 中的 key 到底有什么用？
+
+key 是vue 中 vnode 标记的唯一 id，通过这个key在 diff 操作的时候可以更准确、快速。
+
+- 准确: 如果不加key,那么vue会选择复用节点(Vue的就地更新策略),导致之前节点的状态被保留下来,会产生一系列的bug.
+- 快速: key的唯一性可以被Map数据结构充分利用,相比于遍历查找的时间复杂度O(n),Map的时间复杂度仅仅为O(1).
+
+### Vue diff 算法
+
+![](../images/diff.png)
+
+- [详解vue的diff算法](https://juejin.im/post/5affd01551882542c83301da)

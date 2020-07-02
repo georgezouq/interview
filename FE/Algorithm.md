@@ -175,16 +175,31 @@ function Fibonacci(n) {
 递归：从顶部开始将问题分解，通过解决掉所有分解出的小问题的方式，来解决整个问题
 动态规划：从底部开始解决问题，将所有的小问题解决掉，然后合并成一个解决方案，从而解决掉大问题
 
+动态规划解决找零问题：
 
-var postorderTraversal = function(root) {
-    let res = []
-    if (!root) return res
+```js
+const coinChange = (coins, amount) => {
+  // 初始化备忘录,用Infinity填满备忘录，Infinity说明该值不可以用硬币凑出来
+  const dp = new Array(amount + 1).fill(Infinity)
 
-    let loop = function(tree) {
-        tree.left && loop(tree.left)
-        tree.right && loop(tree.right)
-        res.push(tree.val)
+  // 设置初始条件为 0
+  dp[0] = 0
+
+  for (var i = 1; i <= amount; i++) {
+    for (const coin of coins) {
+      // 根据动态转移方程求出最小值
+      if (coin <= i) {
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1)
+      }
     }
-    loop(root)
-    return res
-};
+  }
+
+  // 如果 `dp[amount] === Infinity`说明没有最优解返回-1,否则返回最优解
+  return dp[amount] === Infinity ? -1 : dp[amount]
+}
+
+```
+
+输入: coins = [1, 2, 5], amount = 11
+输出: 3 
+解释: 11 = 5 + 5 + 1
