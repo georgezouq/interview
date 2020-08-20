@@ -1,9 +1,5 @@
 # 网络
 
-### HTTP 都有哪些方法，这些方法的作用
-
-POST GET DELETE PUT OPTIONS
-
 ### 从用户在浏览器输入地址到页面渲染完成期间 都发生了什么
 
 1. 在浏览器地址栏输入URL
@@ -277,4 +273,59 @@ PWA （Progressive web apps 渐进式Web应用），运用现代的Web API 以�
 
 回流是一定会触发重绘的
 
+## HTTP
+
+### HTTP 协议的特点
+
+- 简单快速
+- 灵活
+- 无连接
+- 无状态
+
+### HTTP 报文的组成部分
+
+- 请求报文
+    - 请求行
+    - 请求头
+    - 空行
+    - 请求体
+- 响应报文
+    - 状态行
+    - 响应头
+    - 空行
+    - 响应体
+
+![image](http://note.youdao.com/yws/res/25009/WEBRESOURCEc23e8456831fa067494dcef33386deb5)
+
+![image](http://note.youdao.com/yws/res/25012/WEBRESOURCEf2937c67a7b883944928abdfa588cacd)
+
+### HTTP 方法
+
+![image](http://note.youdao.com/yws/res/25014/WEBRESOURCE23f46be4544b675ac578d6fd5b3460fa)
+
+### POST GET 区别
+
+- GET 回退无害，POST 会再次提交请求
+- GET 产生的 URL 地址可以被收藏，POST 不行
+- GET 请求会被浏览器主动缓存，POST 不行除非主动设置
+- GET 只能进行 URL 编码，而 POST 支持多种编码方式
+- GET 请求参数会被完整的保留在浏览器历史记录中，而 POST 的参数不会被保留
+- GET 请求在URL 中传送的参数是有长度限制的，POST 没有
+- 对参数的数据类型，GET只接收ASCII 字符，POST 没有
+- GET 比 POST 更不安全
+- GET 参数通过 URL 传递，POST 放在 REQUEST BODY中
+
+### HTTP 状态码
+
+- 1xx 指示信息 - 表示请求已经接收，继续处理
+- 2xx 成功
+- 3xx 重定向
+- 4xx 客户端错误
+- 5xx 服务器错误
+
+- 200 OK
+- 206 Partial Content 客户发送了一个带有Range头的GET请求，服务器完成了它
+- 301 Moved Permanently （永久） 锁清秋的页面已经转移到新的URL
+- 302 Found （临时） 锁清秋的页面已经临时转移到新的UR
+- 304 Not Modified 客户端有缓存文档并发出了一个条件性的请求，服务器告诉客户，原来的缓存的文档还可以继续使用
 

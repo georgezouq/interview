@@ -89,6 +89,90 @@
   }
 ```
 
+
+### 页面三栏布局
+
+假设高度已知，请写出三栏布局，其中左右栏宽度各为300px，中间自适应
+
+```html
+<html>
+    <head>
+        <style>
+            html * {
+                padding: 0;
+                margin: 0;
+            }
+            
+            .layout article div {
+                min-height: 100px;
+            }
+            
+            .layout.float .left {
+                
+                float: left;
+                width: 300px;
+                background: red;
+            }
+            
+            .layout.float .right {
+                
+                float: right;
+                width: 300px;
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="layout float">
+            <div class="left"></div>
+            <div class="right"></div>
+            
+            <div class="center">
+                <p>浮动解决方案</p>
+                
+            </div>
+        </div>
+        
+        <div class="layout table">
+            <style>
+                .layout.table .left {
+                    width: 100%;
+                    display: table;
+                    height: 100px;
+                }
+                
+                .layout.table  .div {
+                    display: table-cell;
+                }
+            </style>
+            <div class="left"></div>
+            <div class="right"></div>
+            
+            <div class="center">
+                <p>浮动解决方案</p>
+                
+            </div>
+        </div>
+    </body>
+</html>
+```
+
+##### 实现方式
+
+- 浮动：需要清除浮动
+- 绝对定位：脱离文档流
+- flexbox
+- tablecell
+- 网格布局
+
+##### 页面布局小结
+
+- 语义化掌握到位
+- 页面布局理解深刻
+- CSS基础知识扎实
+- 思维灵活并且积极
+- 代码书写规范
+
 ### CSS3 有哪些新增特性
 
 边框
@@ -282,6 +366,83 @@ padding 百分比相对于父元素宽度计算
 </style>
 ```
 
+### 谈谈对CSS盒模型的认识
+
+![image](http://note.youdao.com/yws/res/24852/WEBRESOURCE42187b59e02cce67549377fdd0986632?ynotemdtimestamp=1597928830018)
+
+- margin
+- border
+- padding
+- content
+
+#### 标准模型和IE模型的区别
+
+其中，标准模型 和 IE模型的区别就在于 width 和 
+height 的计算方式不同。
+
+- 标准模型为 content 的宽度、高度。
+- IE模型是计算 border 和 padding 的宽度、高度。
+
+![image](http://note.youdao.com/yws/res/24858/WEBRESOURCE2096a37cfde0dedb845799325a36551e)
+
+#### CSS如何设置这两种模型
+
+```css
+    box-sizing: content-box; // 标准模型（默认）
+    box-sizing: border-box; // IE模型
+```
+
+#### JS如何设置盒模型的宽高
+
+1. `dom.style.width/height` 只能取内联样式的宽高
+2. `dom.currentStyle.width/height` 渲染后的宽高（只有IE支持）
+3. `window.getComputedStyle(dom).width/height` 所有浏览器都支持的获取渲染后的宽高
+4. `dom.getBoundingClientRect()` 主要用于获取元素的绝对位置
+
+#### 解释什么是CSS盒模型的边距重叠
+
+```
+<div class="parent">
+    <div class="child"></div>
+</div>
+
+<style>
+    .child {
+        margin-top: 10px;
+        height: 100%;
+    }
+</style>
+```
+
+以上代码可以看到，parent 的高度为100px，child的 margin-top 和 parent 发生了重叠，parent 的上边距是 10px。
+
+### BFC 边距重叠解决方案
+
+给父级元素添加 `overflow: hidden;`  后，我们发现父级元素的高度变成了 110，边距重叠的问题没有了。`overflow: hidden` 是一种 BFC （块级格式化上下文）。
+
+#### BFC原理和渲染规则
+
+- BFC 这个元素的垂直方向的边距会发生重叠
+- BFC 的区域不会与浮动元素的 box 重叠
+- BFC在页面上是一个独立的容器，外面和里面的元素都不会影响他
+- 计算BFC高度的时候，浮动元素也会参与计算
+
+IFC 内联元素格式化上下文
+
+#### 如何创建BFC
+
+- float 为 none
+- position 不是默认的 static，而是 relative 或者其他的
+- display table
+- overflow hidden
+
+#### BFC的应用
+
+- 解决边距重叠
+- 清除浮动（BFC子元素即使是float 也会参与高度计算）
+- 防止占据浮动空间
+
+
 ### 怎么理解Flex 布局，flex 布局与普通布局有什么区别，什么情况下我们用flex 什么情况下用普通布局
 
 - 传统布局以基于盒子模型，依赖 display、position、float 等属性。对于那些特殊布局非常不方便，比如垂直居中
@@ -299,7 +460,7 @@ padding 百分比相对于父元素宽度计算
         - nowrap 不换行
         - wrap 换行
         - wrap-reverse 换行，第一行在下方
-    
+
 ### CSS布局方式都有那些
 
 - 传统布局
