@@ -6,6 +6,7 @@
 
 ### 知识点
 
+- [前端面试准备](./FE/Prepare.md)
 - [Javascript](./FE/JS.md)
 - [HTML](./FE/HTML.md)
 - [CSS](./FE/CSS.md)
