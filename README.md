@@ -4,6 +4,10 @@
 
 [题目列表](./FE/List.md)
 
+公众号 | Github 博客
+---|---
+![pic](./images/qrcode/wechat_o.jpg) | [@跳动的神经元](https://github.com/georgezouq/blog)
+
 ### 知识点
 
 - [前端面试准备](./FE/Prepare.md)
