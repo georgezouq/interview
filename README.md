@@ -33,6 +33,15 @@
 - [雪球](./FE/company/雪球.md)
 - [跟谁学](./FE/company/跟谁学.md)
 
+### 手写代码
+
+- Promise: [原型实现](./FE/hand-write/Promise.js) | [Class实现](./FE/hand-write/PromiseClass.js)
+- [Curry 柯里化](./FE/hand-write/Promise.js)
+- [Adapter 适配器](./FE/hand-write/Adapter.js)
+- [React Hook](./FE/hand-write/ReactHook.js)
+- [Bind方法](./FE/hand-write/Bind.js)
+- [节流 Debounce 防抖 Throttle](./FE/hand-write/DebounceThrottle.js)
+
 ### 其他资源
 
 - [面试官系列](https://juejin.im/post/5bf8dab3f265da61590b55d4)

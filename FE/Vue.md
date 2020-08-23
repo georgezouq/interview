@@ -66,43 +66,6 @@
 
 [更多](https://juejin.im/post/5d267dcdf265da1b957081a3#heading-6)
 
-### Vuex是什么，我们为什么需要vuex
-
-Vuex是 Vue 的状态管理库，类似React 的 Redux，可以给Vue应用提供一个集中式存储的全局状态。
-
-我们可以简略的看 MVC和 MVVM框架，状态在 Model -> Controller -> View -> Model 之间流转。从 Model 到 View 的部分已经被 Vue 之类的框架处理了，我们的状态管理核心要解决的就是从 View 到 Model
-
-Vuex 的优势在于：
-
-- 实现跨组件的通讯
-- 清晰的数据流，方便业务理解和错误排查
-- 每个实例/组件仍然可以拥有和管理自己的私有状态
-- 记录变更 (mutation)、保存状态快照、历史回滚/时光旅行的先进的调试工具
-
-### vuex有哪几种属性？
-
-有五种，分别是 State、 Getter、Mutation 、Action、 Module
-
-- state：存储数据，存储状态；在根实例中注册了store 后，用 this.$store.state 来访问；对应vue里面的data；存放数据方式为响应式，vue组件从store中读取数据，如数据发生变化，组件也会对应的更新。
-- getter：可以认为是 store 的计算属性，它的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
-- mutation：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。
-- action：可以包含异步操作，通过提交 mutation 间接更变状态。
-- module：将 store 分割成模块，每个模块都具有state、mutation、action、getter、甚至是嵌套子模块。
-
-### Vue.js中ajax请求代码应该写在组件的methods中还是vuex的actions中？
-
-一、如果请求来的数据是不是要被其他组件公用，仅仅在请求的组件内使用，就不需要放入vuex 的state里。
-
-二、如果被其他地方复用，这个很大几率上是需要的，如果需要，请将请求放入action里，方便复用，并包装成promise返回，在调用处用async await处理返回的数据。如果不要复用这个请求，那么直接写在vue文件里很方便。
-
-### 不用Vuex会带来什么问题？
-
-一、可维护性会下降，你要想修改数据，你得维护三个地方
-
-二、可读性会下降，因为一个组件里的数据，你根本就看不出来是从哪来的
-
-三、增加耦合，大量的上传派发，会让耦合性大大的增加，本来Vue用Component就是为了减少耦合，现在这么用，和组件化的初衷相背。
-
 ### Vue 双向绑定的实现原理
 
 在 Vue2.0 中通过　`Object.defineProperty` 实现对象的 get 和 set 方法实现数据劫持。结合 `发布 / 订阅者模式` 实现。但是这种实现方式无法完成对数组的监听，Vue2.0中重写了数组的 push pop shift 等方法实现对数组改变的监听。而Vue3中通过使用 ES6 中的 Proxy，实现对所有数据类型数据变化的监听。
@@ -267,3 +230,52 @@ key 是vue 中 vnode 标记的唯一 id，通过这个key在 diff 操作的时�
 ![](../images/diff.png)
 
 - [详解vue的diff算法](https://juejin.im/post/5affd01551882542c83301da)
+
+## VUEX
+
+### Vuex是什么，我们为什么需要vuex
+
+Vuex是 Vue 的状态管理库，类似 React 的 Redux，可以给Vue应用提供一个集中式存储的全局状态。
+
+我们可以简略的看 MVC 和 MVVM 框架，状态在 Model -> Controller -> View -> Model 之间流转。从 Model 到 View 的部分已经被 Vue 之类的框架处理了，我们的状态管理核心要解决的就是从 View 到 Model
+
+Vuex 的优势在于：
+
+- 实现跨组件的通讯
+- 清晰的数据流，方便业务理解和错误排查
+- 每个实例/组件仍然可以拥有和管理自己的私有状态
+- 记录变更 (mutation)、保存状态快照、历史回滚/时光旅行的先进的调试工具
+
+### vuex有哪几种属性？
+
+有五种，分别是 State、 Getter、Mutation 、Action、 Module
+
+- state：存储数据，存储状态；在根实例中注册了store 后，用 this.$store.state 来访问；对应vue里面的data；存放数据方式为响应式，vue组件从store中读取数据，如数据发生变化，组件也会对应的更新。
+- getter：可以认为是 store 的计算属性，它的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+- mutation：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。
+- action：可以包含异步操作，通过提交 mutation 间接更变状态。
+- module：将 store 分割成模块，每个模块都具有state、mutation、action、getter、甚至是嵌套子模块。
+
+### Vue.js 中 ajax 请求代码应该写在组件的 methods 中还是 vuex 的 actions 中？
+
+一、如果请求来的数据是不是要被其他组件公用，仅仅在请求的组件内使用，就不需要放入vuex 的state里。
+
+二、如果被其他地方复用，这个很大几率上是需要的，如果需要，请将请求放入action里，方便复用，并包装成promise返回，在调用处用async await处理返回的数据。如果不要复用这个请求，那么直接写在vue文件里很方便。
+
+### 不用 Vuex 会带来什么问题？
+
+一、可维护性会下降，你要想修改数据，你得维护三个地方
+
+二、可读性会下降，因为一个组件里的数据，你根本就看不出来是从哪来的
+
+三、增加耦合，大量的上传派发，会让耦合性大大的增加，本来Vue用Component就是为了减少耦合，现在这么用，和组件化的初衷相背。
+
+### 如何通过访问this.$store.getters.a就能返回对应方法执行后的返回值
+
+```js
+Object.defineProperty(store.getters, key, {
+  get: function() { return store._vm[key] },
+  enumerable: true
+})
+```
+
