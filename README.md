@@ -36,7 +36,7 @@
 ### 手写代码
 
 - Promise: [原型实现](./FE/hand-write/Promise.js) | [Class实现](./FE/hand-write/PromiseClass.js)
-- [Curry 柯里化](./FE/hand-write/Promise.js)
+- [Curry 柯里化](./FE/hand-write/Curry.js)
 - [Adapter 适配器](./FE/hand-write/Adapter.js)
 - [React Hook](./FE/hand-write/ReactHook.js)
 - [Bind方法](./FE/hand-write/Bind.js)
