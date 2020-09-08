@@ -1,0 +1,15 @@
+{
+  "name": "hand-write",
+  "version": "0.0.1",
+  "description": "helper",
+  "main": "Adaptar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GeorgeZou",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/preset-react": "^7.8.3"
+  }
+}

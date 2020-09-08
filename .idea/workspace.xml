@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FE/hand-write/Curry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/prototype1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/prototype2.png" afterDir="false" />
+    <list default="true" id="478f835f-a1b5-44a7-a3d8-80bc187f5d46" name="Default Changelist" comment="Add interview question">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/Algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/Algorithm.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/JS.md" beforeDir="false" afterPath="$PROJECT_DIR$/FE/JS.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FE/hand-write/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/FE/hand-write/Test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Algorithm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/CSS.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/CSS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/HTML.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/HTML.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/JS.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/JS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/List.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/List.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/NetworkBrowser.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/NetworkBrowser.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Prepare.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Prepare.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/React.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/React.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Secure.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Secure.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Senior.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Senior.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Skill.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Skill.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Vue.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Vue.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/Webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/Webpack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/Boss直聘.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/Boss直聘.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/字节跳动.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/字节跳动.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/小米.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/小米.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/新浪.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/新浪.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/熵简科技.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/熵简科技.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/百度.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/百度.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/知乎.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/知乎.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/美团点评.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/美团点评.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/腾讯.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/蚂蚁金服.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/蚂蚁金服.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/跟谁学.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/跟谁学.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/钉钉.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/钉钉.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/雪球.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/雪球.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/company/黄油相机.md" beforeDir="false" afterPath="$PROJECT_DIR$/公司/黄油相机.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Adapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/Adapter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Bind.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/Bind.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Curry.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/Curry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/DebounceThrottle.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/DebounceThrottle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/Promise.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/PromiseClass.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/PromiseClass.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/ReactHook.js" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/ReactHook.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/手写代码/Test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/hand-write/TinyVue/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/知识点/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,28 +52,29 @@
   </component>
   <component name="ProjectId" id="1XYDRKUoxgFfw1c8C4zOYk3Gl3o" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="Settings.Markdown" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/images" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -74,7 +104,32 @@
       <workItem from="1582590646326" duration="108000" />
       <workItem from="1582590771848" duration="6792000" />
       <workItem from="1582776694751" duration="53000" />
-      <workItem from="1582776782741" duration="41062000" />
+      <workItem from="1582776782741" duration="60344000" />
+      <workItem from="1583542515016" duration="1473000" />
+      <workItem from="1583654528917" duration="121000" />
+      <workItem from="1583654663136" duration="2458000" />
+      <workItem from="1583851557977" duration="9060000" />
+      <workItem from="1583902569535" duration="45000" />
+      <workItem from="1583902658409" duration="725000" />
+      <workItem from="1583978902721" duration="276000" />
+      <workItem from="1586226751462" duration="1305000" />
+      <workItem from="1593077054094" duration="1990000" />
+      <workItem from="1593143090694" duration="2158000" />
+      <workItem from="1593236709339" duration="5520000" />
+      <workItem from="1593304223670" duration="547000" />
+      <workItem from="1593306009089" duration="28000" />
+      <workItem from="1593306049266" duration="1467000" />
+      <workItem from="1593395603828" duration="44000" />
+      <workItem from="1593395692103" duration="59000" />
+      <workItem from="1593653981981" duration="74000" />
+      <workItem from="1594738791189" duration="54000" />
+      <workItem from="1597453004610" duration="1624000" />
+      <workItem from="1597929131360" duration="4889000" />
+      <workItem from="1598143565902" duration="1650000" />
+      <workItem from="1598149196120" duration="3007000" />
+      <workItem from="1598162296922" duration="173000" />
+      <workItem from="1598499140543" duration="594000" />
+      <workItem from="1599525863001" duration="142000" />
     </task>
     <task id="LOCAL-00001" summary="Add FE interview question">
       <created>1581228148469</created>
@@ -167,30 +222,187 @@
       <option name="project" value="LOCAL" />
       <updated>1582937601282</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Add new FE question for company and hand-write code">
+      <created>1582980541276</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582980541276</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add lots of new question">
+      <created>1583061475243</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1583061475243</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Try new toc">
+      <created>1583061950995</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1583061950995</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add new interview function">
+      <created>1583152630899</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1583152630899</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add new interview question">
+      <created>1583679676509</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1583679676509</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Add new interview question">
+      <created>1583853210216</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1583853210216</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add new interview question">
+      <created>1583907052985</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1583907052985</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add 美团点评 interview question">
+      <created>1593078194066</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1593078194066</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Update interview question">
+      <created>1593236993985</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1593236993985</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Update interview question">
+      <created>1593303363613</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1593303363613</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Add interview question">
+      <created>1593395628578</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1593395628578</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add interview question">
+      <created>1593395736655</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1593395736655</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add interview question">
+      <created>1593654036504</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1593654036504</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Add prepare for interview">
+      <created>1597929682589</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1597929682589</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add link to blog">
+      <created>1597929901548</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1597929901549</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add interview question">
+      <created>1597967037813</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1597967037813</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add hand write code">
+      <created>1598153795618</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1598153795618</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fix link problem">
+      <created>1598153945523</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1598153945523</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add FE interview question" />
     <MESSAGE value="Add new FE question" />
     <MESSAGE value="Add new FE question for company" />
     <MESSAGE value="Add new FE question for company and hand-write code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new FE question for company and hand-write code" />
+    <MESSAGE value="Add lots of new question" />
+    <MESSAGE value="Try new toc" />
+    <MESSAGE value="Add new interview function" />
+    <MESSAGE value="Add new interview question" />
+    <MESSAGE value="Add 美团点评 interview question" />
+    <MESSAGE value="Update interview question" />
+    <MESSAGE value="Add prepare for interview" />
+    <MESSAGE value="Add link to blog" />
+    <MESSAGE value="Add interview question" />
+    <MESSAGE value="Add hand write code" />
+    <MESSAGE value="Fix link problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix link problem" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="417" y="6" key="CommitChangelistDialog2" timestamp="1598153945443">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="417" y="6" key="CommitChangelistDialog2/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1597967037648" />
+    <state x="417" y="6" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1598153945443" />
+    <state x="168" y="94" key="DiffContextDialog" timestamp="1597931393272">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="168" y="94" key="DiffContextDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1597931393272" />
+    <state x="440" y="261" key="Vcs.Push.Dialog.v2" timestamp="1598153946681">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="440" y="261" key="Vcs.Push.Dialog.v2/-1920.0.1920.1080/0.0.1680.1050@0.0.1680.1050" timestamp="1597967039059" />
+    <state x="440" y="261" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1598153946681" />
+    <state x="542" y="264" width="596" height="522" key="find.popup" timestamp="1598162306365">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="542" y="264" width="596" height="522" key="find.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1598162306365" />
+    <state x="542" y="281" width="596" height="522" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1598144868890" />
   </component>
 </project>
