@@ -1,24 +1,22 @@
 # 目录
 
-![fe-interview](.gitbook/assets/fe-interview.png)
+![&#x524D;&#x7AEF;&#x6280;&#x80FD;&#x6811;](.gitbook/assets/fe-interview.png)
 
-[题目列表](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/List.md)
-
-| 公众号 | Github 博客 |
-| :--- | :--- |
-| ![pic](.gitbook/assets/wechat_o.jpg) | [@跳动的神经元](https://github.com/georgezouq/blog) |
+| 公众号 | Github 博客 | GitBook |
+| :--- | :--- | :--- |
+| ![pic](.gitbook/assets/wechat_o.jpg) | [@跳动的神经元](https://github.com/georgezouq/blog) | [@大厂深度前端面试题](http://interview.tefact.com) |
 
 ## 知识点
 
-* [前端面试准备](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/Prepare.md)
-* [Javascript](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/JS.md)
-* [HTML](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/HTML.md)
-* [CSS](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/CSS.md)
-* [算法](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/Algorithm.md)
-* [网络与浏览器](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/NetworkBrowser.md)
-* [Vue](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/Vue.md)
-* [React](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/React.md)
-* [深度](https://github.com/georgezouq/interview/tree/eaa36aade79b0e4272cc353fca0a0e4ec52fe742/知识点/Senior.md)
+* [简历与面试技巧](skill.md)
+* [JavaScript](js.md)
+* [HTML](html.md)
+* [CSS](css.md)
+* [算法](algorithm.md)
+* [网络与浏览器](networkbrowser.md)
+* [Vue](kuang-jia/vue.md)
+* [React](kuang-jia/react.md)
+* [高级/资深](senior.md)
 
 ## 公司
 
