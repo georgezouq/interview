@@ -7,7 +7,6 @@
 
 ---
 
-* [前端面试技巧](prepare.md)
 * [网络与浏览器](networkbrowser.md)
 * [CSS](css.md)
 * [JavaScript](js.md)
