@@ -1,4 +1,4 @@
-# 跟谁学 前端面试题
+# 跟谁学
 
 ## [北京跟谁学前端正式岗-面试1，2面，已拿offer 2018-08](https://bbs.yingjiesheng.com/thread-2160035-1-1.html)
 
