@@ -1,8 +1,8 @@
 # 算法
 
-### 用递归算法实现，数组长度为5且元素的随机数在2-32之间不重复的值
+## 用递归算法实现，数组长度为5且元素的随机数在2-32之间不重复的值
 
-```js
+```javascript
 let arr = giveRandomNumber([], 5, 32, 2)
 console.log('arr:', arr)
 
@@ -13,43 +13,43 @@ function giveRandomNumber(arr, length, max, min) {
 }
 ```
 
-### 写一个方法去掉空格
+## 写一个方法去掉空格
 
 方法一 Regex：
 
-```js
+```javascript
 string.replace(/\s/g, '')
 ```
 
 方法二 Split：
 
-```js
+```javascript
 const a = (str) => str.split(' ').join('')
 ```
 
-### 二分查找
+## 二分查找
 
 很简单，就是控制好左侧和右侧的指针，然后使用中间的跟 target 对比。如果一致 就是当前中间值，如果小 则说把左侧指针移动到中间指针后一个，继续前面的操作
 
-#### 递归
+### 递归
 
-```js
+```javascript
 let data = [12, 24, 32, 43, 52, 61, 74]
 function splitFind(arr, target) {
   const time = arr.length / 2
   const first = arr[time]
 
   for (let i = 0; i < arr.length; i++) {
-  
+
   }
 }
 
 console.log('result:', splitFind(data, 61))
 ```
 
-#### 循环
+### 循环
 
-```js
+```javascript
 var search = function(nums, target) {
     let left = 0
     let right = nums.length - 1
@@ -70,9 +70,9 @@ var search = function(nums, target) {
 }
 ```
 
-### 找出数组中连续重复的元素的起始索引
+## 找出数组中连续重复的元素的起始索引
 
-```js
+```javascript
 var arr = [1,2,3,9,9,9,9,6,7,8,10,10,10,15]
 var dic = {}
 for (k in arr){
@@ -85,11 +85,11 @@ console.log(dic)
 // { '9': [ '3', '6' ], '10': [ '10', '12' ] }
 ```
 
-### 斐波那契数列
+## 斐波那契数列
 
 简单实现（极其容易内存溢出）
 
-```js
+```javascript
 function Fibonacci(n) {
   if (n <= 1) { return n }
   return Fibonacci(n-2) + Fibonacci(n-1)
@@ -98,7 +98,7 @@ function Fibonacci(n) {
 
 尾递归实现（简单，安全）
 
-```js
+```javascript
 function Fibonacci(n, ac1 = 1, ac2 = 1) {
     if (n <= 1) { return ac2 }
     return Fibonacci(n - 1, ac2, ac1 + ac2)
@@ -107,7 +107,7 @@ function Fibonacci(n, ac1 = 1, ac2 = 1) {
 
 循环实现
 
-```js
+```javascript
 function Fibonacci(n) {
   let ac1 = 1, ac2 = 1
 
@@ -121,7 +121,7 @@ function Fibonacci(n) {
 
 yield 实现
 
-```js
+```javascript
 function* FibonacciGenerator() {
   let ac1 = 1, ac2 = 1
   while(true) {
@@ -143,41 +143,41 @@ function Fibonacci(n) {
 }
 ```
 
-
-        if (curX < n || curY < m) {
-            if (flag) {
-                if (curY === 0) {
-                    flag = false
-                    curX += 1
-                } else {
-                    curX += 1
-                    curY -= 1
-                }
+```text
+    if (curX < n || curY < m) {
+        if (flag) {
+            if (curY === 0) {
+                flag = false
+                curX += 1
             } else {
-                if (curX === 0) {
-                    flag = true
-                    curY += 1
-                } else {
-                    curX -= 1
-                    curY += 1
-                }
+                curX += 1
+                curY -= 1
             }
         } else {
-            if (flag) {
-                if ()
+            if (curX === 0) {
+                flag = true
+                curY += 1
+            } else {
+                curX -= 1
+                curY += 1
             }
         }
+    } else {
+        if (flag) {
+            if ()
+        }
+    }
+```
 
-### 动态规划
+## 动态规划
 
 动态规划可以看作是与递归相反的技术
 
-递归：从顶部开始将问题分解，通过解决掉所有分解出的小问题的方式，来解决整个问题
-动态规划：从底部开始解决问题，将所有的小问题解决掉，然后合并成一个解决方案，从而解决掉大问题
+递归：从顶部开始将问题分解，通过解决掉所有分解出的小问题的方式，来解决整个问题 动态规划：从底部开始解决问题，将所有的小问题解决掉，然后合并成一个解决方案，从而解决掉大问题
 
 动态规划解决找零问题：
 
-```js
+```javascript
 const coinChange = (coins, amount) => {
   // 初始化备忘录,用Infinity填满备忘录，Infinity说明该值不可以用硬币凑出来
   const dp = new Array(amount + 1).fill(Infinity)
@@ -197,9 +197,7 @@ const coinChange = (coins, amount) => {
   // 如果 `dp[amount] === Infinity`说明没有最优解返回-1,否则返回最优解
   return dp[amount] === Infinity ? -1 : dp[amount]
 }
-
 ```
 
-输入: coins = [1, 2, 5], amount = 11
-输出: 3 
-解释: 11 = 5 + 5 + 1
+输入: coins = \[1, 2, 5\], amount = 11 输出: 3 解释: 11 = 5 + 5 + 1
+

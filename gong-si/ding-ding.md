@@ -1,0 +1,14 @@
+# 钉钉
+
+* React 的 性能优化
+* [页面的 Script 是如何加载的](https://github.com/georgezouq/interview/blob/master/FE/CSS.md#JS解析流程)
+* React 实现滚动加载
+* 重绘 和 回流
+* 给定Excel上的两个区域，列用字母表示 （a-z），行用数字表示，求这两个区域的交集
+
+    // 输入为 A1:B5 B2:C3，输出 B2:C3
+
+    // 注：A列代表第1列，Z列代表第26列，AMJ列代表1024列
+
+    // Excel的边界是最大行2^20, 最大列 2^14
+

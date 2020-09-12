@@ -1,0 +1,12 @@
+# 蚂蚁金服 面试题
+
+* 组件的定义是怎样的，最小力度的组件等同于什么
+* 为什么React 的 render 方法 return 如何返回多行 jsx 需要加小括号？
+* React stateless 组件
+* shouldComponentUpdate 原理
+* Hot reloading 作用范围
+* React 性能优化常用的方法
+* promise.allSettle 和 Promise.all 
+* xhr2.0 比 xhr1.0 增加了哪些内容
+* fetch 和 xhr有撒区别~
+
