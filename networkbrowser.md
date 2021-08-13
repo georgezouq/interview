@@ -253,7 +253,7 @@ PWA （Progressive web apps 渐进式Web应用），运用现代的Web API 以�
 * 5xx 服务器错误
 * 200 OK
 * 206 Partial Content 客户发送了一个带有Range头的GET请求，服务器完成了它
-* 301 Moved Permanently （永久） 锁清秋的页面已经转移到新的URL
-* 302 Found （临时） 锁清秋的页面已经临时转移到新的UR
+* 301 Moved Permanently （永久） 所请求的页面已经转移到新的URL
+* 302 Found （临时）所请求的页面已经临时转移到新的URL
 * 304 Not Modified 客户端有缓存文档并发出了一个条件性的请求，服务器告诉客户，原来的缓存的文档还可以继续使用
 
