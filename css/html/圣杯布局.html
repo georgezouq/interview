@@ -1,0 +1,63 @@
+<html>
+  <header>
+    <style>
+      .container {
+
+      }
+
+      .column {
+        float: left;
+      }
+
+      #container {
+        padding-left: 200px;
+        padding-right: 150px;
+      }
+
+      #left {
+        width: 200px;
+        background-color: aqua;
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+      }
+
+      #right {
+        width: 150px;
+        background-color: beige;
+        margin-right: -150px;
+        /* right: 150px; */
+        position: relative;
+      }
+
+      #center {
+        width: 100%;
+        background-color: blueviolet;
+      }
+
+      #footer {
+        background-color: rgb(226, 189, 43);
+        /* clear: both; */
+      }
+
+      .clearfix:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+    </style>
+  </header>
+  <body>
+    <header>
+      this is header
+    </header>
+    <div id="container" class="clearfix">
+      <div id="center" class="column">this is center</div>
+      <div id="left" class="column">this is left</div>
+      <div id="right" class="column">this is right</div>
+    </div>
+    <footer id="footer">
+      this is footer
+    </footer>
+  </body>
+</html>

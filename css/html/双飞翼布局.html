@@ -1,0 +1,58 @@
+<html>
+  <header>
+    <style>
+      body {
+        min-width: 550px;
+      }
+
+      .col {
+        float: left;
+      }
+
+      #main {
+        width: 100%;
+        height: 200px;
+        background-color: #ccc;
+      }
+
+      #left {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+        margin-left: -100%;
+        position: relative;
+        left: 0px;
+      }
+
+      #right {
+        width: 150px;
+        height: 200px;
+        background-color: beige;
+        /* margin-right: -100%;
+        right: 150px; */
+        margin-left: -150px;
+        position: relative;
+      }
+
+      #center {
+        width: 100%;
+        height: 200px;
+        background-color: blueviolet;
+      }
+
+      #main-wrap {
+        height: 200px;
+        margin-left: 200px;
+        margin-right: 150px;
+        background-color: rgb(10, 201, 125);
+      }
+    </style>
+  </header>
+  <body>
+    <div id="main" class="col">
+      <div id="main-wrap">this is center</div>
+    </div>
+    <div id="left" class="col">this is left</div>
+    <div id="right" class="col">this is right</div>
+  </body>
+</html>
