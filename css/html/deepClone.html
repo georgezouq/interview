@@ -1,0 +1,58 @@
+<html>
+  <header>
+    <style>
+    </style>
+    <script>
+      const targetObj = {
+        'a': 1,
+        'b': [
+          {
+            c: '123',
+            d: '435534'
+          }, {
+            d: 'sdfsa',
+            e: {
+              f: '123'
+            }
+          }
+        ]
+      }
+    
+      function deepClone(target) {
+        function loop(obj) {
+          const typeName = Object.prototype.toString.call(obj)
+          let newObject
+          switch(typeName) {
+            case '[object Array]':
+              newObject = []
+
+              obj.map((key) => {
+                newObject.push(loop(key))
+              })
+
+              return newObject
+            case '[object Object]':
+              newObject = {}
+
+              Object.keys(obj).map((key) => {
+                newObject[key] = loop(obj[key])
+              })
+
+              return newObject
+            default:
+              return obj
+          }
+        }
+
+        return loop(target)
+      }
+
+      const newObj = deepClone(targetObj)
+      console.log("bf newObj:", newObj)
+      newObj.b[0].c = '这绝对是一个新值'
+      console.log("newObj:", newObj)
+      console.log("oldObj:", targetObj)
+    </script>
+  </header>
+  <body>
+</html>
